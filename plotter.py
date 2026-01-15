@@ -28,7 +28,7 @@ def contour_flow_net(xrange, yrange, flow_func, levels=50):
     # Compute the flow function values
     OMEGA = np.vectorize(flow_func)(Z)
 
-    
-    plt.contour(X, Y, OMEGA.imag, levels=levels, colors='blue', linestyles='solid')
-    plt.contour(X, Y, OMEGA.real, levels=levels, colors='red', linestyles='dashed')
+
+    plt.contour(X, Y, OMEGA.imag, levels=levels, colors='blue', linestyles='solid', linewidths=0.5)
+    plt.contour(X, Y, OMEGA.real, levels=levels, colors='red', linestyles='solid', linewidths=0.5)
     plt.axis('equal')
