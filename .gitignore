@@ -1,6 +1,6 @@
 # Python.gitignore
 # Own additions
-sandbox.py
+sandbox*.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
