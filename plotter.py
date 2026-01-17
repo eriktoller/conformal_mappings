@@ -28,7 +28,13 @@ def contour_flow_net(xrange, yrange, flow_func, levels=50):
     # Compute the flow function values
     OMEGA = np.vectorize(flow_func)(Z)
 
+    PHI = OMEGA.real
+    PSI = OMEGA.imag
+    dphi = max(PHI.max() - PHI.min(), PSI.max() - PSI.min()) / levels
+    phi_levels = np.arange(PHI.min(), PHI.max(), dphi)
+    psi_levels = np.arange(PSI.min(), PSI.max(), dphi)
 
-    plt.contour(X, Y, OMEGA.imag, levels=levels, colors='blue', linestyles='solid', linewidths=0.5)
-    plt.contour(X, Y, OMEGA.real, levels=levels, colors='red', linestyles='solid', linewidths=0.5)
+
+    plt.contour(X, Y, PSI, levels=psi_levels, colors='blue', linestyles='solid', linewidths=0.5)
+    plt.contour(X, Y, PHI, levels=phi_levels, colors='red', linestyles='solid', linewidths=0.5)
     plt.axis('equal')
