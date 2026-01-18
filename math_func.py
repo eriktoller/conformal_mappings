@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def taylor_series(chi, coef):
     """
     Compute the Taylor series expansion for a given chi value and coefficients.
@@ -19,8 +20,9 @@ def taylor_series(chi, coef):
     """
     result = 0 + 0j
     for i in range(len(coef)):
-        result += coef[i] * (chi ** i)
+        result += coef[i] * (chi**i)
     return result
+
 
 def asym_exp(chi, coef):
     """
@@ -41,8 +43,9 @@ def asym_exp(chi, coef):
     """
     result = 0 + 0j
     for i in range(len(coef)):
-        result += coef[i] / (chi ** i)
+        result += coef[i] / (chi**i)
     return result
+
 
 def cauchy_integral(func_omega, func_chi, degrees, num_points=1000):
     """

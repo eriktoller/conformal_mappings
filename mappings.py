@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def line_to_chi(z, endpoints):
     """
     Map a line segment defined by its endpoints to a unit circle using a conformal mapping.
@@ -17,9 +18,10 @@ def line_to_chi(z, endpoints):
         The mapped complex coordinate on the unit circle.
     """
     z1, z2 = endpoints
-    big_z = ( 2*z - (z1 + z2) ) / (z2 - z1)
+    big_z = (2 * z - (z1 + z2)) / (z2 - z1)
     chi = big_z + np.sqrt(big_z - 1) * np.sqrt(big_z + 1)
     return chi
+
 
 def chi_to_line(chi, endpoints):
     """
@@ -38,9 +40,10 @@ def chi_to_line(chi, endpoints):
         The mapped complex coordinate on the line segment.
     """
     z1, z2 = endpoints
-    big_z = (chi + 1/chi) / 2
+    big_z = (chi + 1 / chi) / 2
     z = ((z2 - z1) * big_z + (z1 + z2)) / 2
     return z
+
 
 def circle_to_chi(z, center, radius):
     """
@@ -63,3 +66,23 @@ def circle_to_chi(z, center, radius):
     chi = (z - center) / radius
     return chi
 
+def chi_to_circle(chi, center, radius):
+    """
+    Map a point on the unit circle back to a circle defined by its center and radius using the inverse conformal mapping.
+
+    Parameters
+    ----------
+    chi : complex
+        The complex coordinate on the unit circle to be mapped back.
+    center : complex
+        The center of the circle.
+    radius : float
+        The radius of the circle.
+
+    Returns
+    -------
+    z : complex
+        The mapped complex coordinate on the circle.
+    """
+    z = chi * radius + center
+    return z
