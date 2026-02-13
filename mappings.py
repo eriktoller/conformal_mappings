@@ -66,6 +66,7 @@ def circle_to_chi(z, center, radius):
     chi = (z - center) / radius
     return chi
 
+
 def chi_to_circle(chi, center, radius):
     """
     Map a point on the unit circle back to a circle defined by its center and radius using the inverse conformal mapping.
@@ -86,3 +87,23 @@ def chi_to_circle(chi, center, radius):
     """
     z = chi * radius + center
     return z
+
+
+def square_to_chi(z, vertices):
+    """
+    Map a square defined by its vertices to a unit circle using a conformal mapping.
+
+    Parameters
+    ----------
+    z : complex
+        The complex coordinate to be mapped.
+    vertices : np.ndarray(complex)
+        A numpy array containing four complex numbers representing the vertices of the square in order.
+
+    Returns
+    -------
+    chi : complex
+        The mapped complex coordinate on the unit circle.
+    """
+    chi = 1
+    return chi

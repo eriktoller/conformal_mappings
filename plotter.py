@@ -1,5 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import imageio
+import tempfile
+import os
 
 
 def contour_flow_net(
@@ -56,3 +59,94 @@ def contour_flow_net(
     plt.axis("equal")
 
     return cs_phi, cs_psi
+
+
+def add_steamline_arrows(cs_psi, n_arrows=10, arrow_style="->", arrow_size=1.5):
+    """
+    Add arrows to the streamlines to indicate flow direction.
+
+    Parameters
+    ----------
+    cs_psi : QuadContourSet
+        The contour set for the stream function.
+    n_arrows : int
+        The number of arrows to add along each streamline.
+    arrow_style : str
+        The style of the arrows.
+
+    Returns
+    -------
+    None
+    """
+    arrows = []
+    for collection in cs_psi.allsegs:
+        segments = collection
+        for segment in segments:
+            if len(segment) < 2:
+                continue
+            indices = np.linspace(0, len(segment) - 2, n_arrows, dtype=int)
+            for idx in indices:
+                start = segment[int(idx)]
+                end = segment[int(idx) + 1]
+                arrow = plt.annotate(
+                    "",
+                    xy=end,
+                    xytext=start,
+                    arrowprops=dict(arrowstyle=arrow_style, color="blue", lw=1.0),
+                )
+                arrows.append(arrow)
+    return arrows
+
+
+def make_arrow_gif(
+    cs_psi, n_arrows=10, arrow_style="->", arrow_size=1.5, filename="arrows.gif"
+):
+    """
+    Create an animated GIF of arrows moving along the streamlines.
+
+    Parameters
+    ----------
+    cs_psi : QuadContourSet
+        The contour set for the stream function.
+    n_arrows : int
+        The number of arrows to add along each streamline.
+    arrow_style : str
+        The style of the arrows.
+    filename : str
+        The name of the output GIF file.
+
+    Returns
+    -------
+    None
+    """
+
+    frames = []
+    frames_str = []
+    for i in range(n_arrows):
+        arrows = add_steamline_arrows(cs_psi, n_arrows=i + 1, arrow_style=arrow_style)
+        plt.axis("equal")
+        plt.title(f"Streamlines with {i + 1} Arrows")
+        plt.draw()
+        # Save the current frame as an image
+        # At the start of the function, create a temp directory
+        temp_dir = tempfile.mkdtemp()
+
+        # Then replace the placeholder with:
+        frame_filename = os.path.join(temp_dir, f"frame_{i}.png")
+        plt.savefig(frame_filename)
+        frames.append(imageio.imread(frame_filename))
+        frames_str.append(frame_filename)
+
+        # Remove the arrows for the next frame
+        for arrow in arrows:
+            arrow.remove()
+
+    # Create GIF
+    imageio.mimsave(filename, frames, duration=5.0 / n_arrows, loop=0)
+
+    # Clean up temporary files
+    for frame_file in frames_str:
+        os.remove(frame_file)
+    os.rmdir(temp_dir)
+
+    print(f"Animated GIF saved as {filename}")
