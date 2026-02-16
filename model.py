@@ -3,6 +3,7 @@ from mappings import line_to_chi
 from plotter import contour_flow_net, make_arrow_gif
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
     print("This is the model module.")
@@ -25,10 +26,9 @@ if __name__ == "__main__":
         ygrid_points=400,
     )
     # add_steamline_arrows(cs_psi, n_arrows=10, arrow_style="->", arrow_size=1.5)
-    make_arrow_gif(
-        cs_psi, n_arrows=10, arrow_style="->", arrow_size=1.5, filename="well_flow.gif"
-    )
-    import matplotlib.pyplot as plt
-
+    #make_arrow_gif(
+    #    cs_psi, n_arrows=10, arrow_style="->", arrow_size=1.5, filename="well_flow.gif"
+    #)
+    
     plt.title("Well Flow")
     plt.show()

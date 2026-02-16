@@ -6,7 +6,7 @@ import os
 
 
 def contour_flow_net(
-    xrange, yrange, flow_func, levels=50, xgrid_points=400, ygrid_points=400
+    xrange, yrange, flow_func, levels=50, xgrid_points=400, ygrid_points=400, mapping_func=None
 ):
     """
     Plot the contour of a complex flow function over a specified range.
@@ -41,6 +41,12 @@ def contour_flow_net(
 
     # Compute the complex potential
     OMEGA = np.vectorize(flow_func)(Z)
+
+    # Apply mapping function if provided
+    if mapping_func is not None:
+        Z = mapping_func(Z)
+        X = Z.real
+        Y = Z.imag
 
     # Extract potential and stream functions and determine contour levels
     PHI = OMEGA.real

@@ -107,3 +107,22 @@ def square_to_chi(z, vertices):
     """
     chi = 1
     return chi
+
+def xi_to_ramp(xi, h):
+    """
+    Map a ramp defined by its height to the upper half-plane using Schwarz-Christoffel transformation.
+
+    Parameters
+    ----------
+    xi : complex
+        The complex coordinate to be mapped.
+    h : float
+        The height of the ramp.
+
+    Returns
+    -------
+    chi : complex
+        The mapped complex coordinate on the upper half-plane.
+    """
+    z = h / np.pi * (np.sqrt(xi-1) * np.sqrt(xi+1) + np.log(xi + np.sqrt(xi-1) * np.sqrt(xi+1)))
+    return z
