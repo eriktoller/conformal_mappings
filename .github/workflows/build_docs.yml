@@ -27,6 +27,8 @@ jobs:
         cd source/
         uv run make html
     
-    - name: Run ghp-import
-      run: | 
-        ghp-import -n -p -f source/_build/html
+    - name: Deploy documentation to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./source/_build/html
