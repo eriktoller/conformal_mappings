@@ -23,7 +23,7 @@ def omega_well(z, q, map_z_to_chi):
     return omega
 
 
-def oemga_uni_flow(z, w, map_z_to_chi=None, map_chi_to_z=None)
+def omega_uni_flow(z, w, map_z_to_chi=None, map_chi_to_z=None):
     """
     Model of a unform flow unsing conformal mappings.
 
@@ -47,7 +47,7 @@ def oemga_uni_flow(z, w, map_z_to_chi=None, map_chi_to_z=None)
     """
 
     if map_chi_to_z is None and map_z_to_chi is None:
-        raise TypeError('Either map_z_to_chi or map_chi_to_z must be passed to the function.')
+        return w * z
 
     if map_chi_to_z is not None:
         omega = w * z

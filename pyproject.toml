@@ -23,6 +23,7 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "ghp-import>=2.1.0",
+    "imageio>=2.37.4",
     "myst-nb>=1.4.0",
     "pre-commit>=4.6.2",
     "ruff>=0.16.7",

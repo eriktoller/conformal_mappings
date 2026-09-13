@@ -13,6 +13,7 @@ def contour_flow_net(
     xgrid_points=400,
     ygrid_points=400,
     mapping_func=None,
+    ax=None
 ):
     """
     Plot the contour of a complex flow function over a specified range.
@@ -62,13 +63,22 @@ def contour_flow_net(
     psi_levels = np.arange(PSI.min(), PSI.max(), dphi)
 
     # Plot contours
-    cs_psi = plt.contour(
-        X, Y, PSI, levels=psi_levels, colors="blue", linestyles="solid", linewidths=0.5
-    )
-    cs_phi = plt.contour(
-        X, Y, PHI, levels=phi_levels, colors="red", linestyles="solid", linewidths=0.5
-    )
-    plt.axis("equal")
+    if ax is None:
+        cs_psi = plt.contour(
+            X, Y, PSI, levels=psi_levels, colors="blue", linestyles="solid", linewidths=0.5
+        )
+        cs_phi = plt.contour(
+            X, Y, PHI, levels=phi_levels, colors="red", linestyles="solid", linewidths=0.5
+        )
+        plt.axis("equal")
+    else:
+        cs_psi = ax.contour(
+            X, Y, PSI, levels=psi_levels, colors="blue", linestyles="solid", linewidths=0.5
+        )
+        cs_phi = ax.contour(
+            X, Y, PHI, levels=phi_levels, colors="red", linestyles="solid", linewidths=0.5
+        )
+
 
     return cs_phi, cs_psi
 
