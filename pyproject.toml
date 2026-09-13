@@ -26,5 +26,6 @@ dev = [
     "myst-nb>=1.4.0",
     "pre-commit>=4.6.2",
     "ruff>=0.16.7",
+    "shibuya>=2026.7.12",
     "sphinx>=9.1.0",
 ]
