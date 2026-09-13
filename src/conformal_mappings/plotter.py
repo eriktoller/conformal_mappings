@@ -6,7 +6,13 @@ import os
 
 
 def contour_flow_net(
-    xrange, yrange, flow_func, levels=50, xgrid_points=400, ygrid_points=400, mapping_func=None
+    xrange,
+    yrange,
+    flow_func,
+    levels=50,
+    xgrid_points=400,
+    ygrid_points=400,
+    mapping_func=None,
 ):
     """
     Plot the contour of a complex flow function over a specified range.

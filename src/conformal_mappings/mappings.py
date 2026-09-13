@@ -108,6 +108,7 @@ def square_to_chi(z, vertices):
     chi = 1
     return chi
 
+
 def xi_to_ramp(xi, h):
     """
     Map a ramp defined by its height to the upper half-plane using Schwarz-Christoffel transformation.
@@ -124,5 +125,51 @@ def xi_to_ramp(xi, h):
     chi : complex
         The mapped complex coordinate on the upper half-plane.
     """
-    z = h / np.pi * (np.sqrt(xi-1) * np.sqrt(xi+1) + np.log(xi + np.sqrt(xi-1) * np.sqrt(xi+1)))
+    z = (
+        h
+        / np.pi
+        * (
+            np.sqrt(xi - 1) * np.sqrt(xi + 1)
+            + np.log(xi + np.sqrt(xi - 1) * np.sqrt(xi + 1))
+        )
+    )
     return z
+
+
+def arc_to_chi(z, center, radius, start_angle, end_angle):
+    """
+    Map an arc defined by its center, radius, and start/end angles to a unit circle using a conformal mapping.
+
+    Parameters
+    ----------
+    z : complex
+        The complex coordinate to be mapped.
+    center : complex
+        The center of the arc.
+    radius : float
+        The radius of the arc.
+    start_angle : float
+        The starting angle of the arc in radians.
+    end_angle : float
+        The ending angle of the arc in radians.
+
+    Returns
+    -------
+    chi : complex
+        The mapped complex coordinate on the unit circle.
+    """
+    # Map the arc to a line segment using a Möbius transformation
+    strt = center + radius * np.exp(1j * start_angle)
+    end = center + radius * np.exp(1j * end_angle)
+    endpoints = np.array([strt, end])
+
+    # Send the start to infinity and the end to 0
+    def mobius(w):
+        return (w - strt) / (w - end)
+
+    # Apply the Möbius transformation to z
+    w = mobius(z)
+    # Map the line segment to the unit circle
+    chi = w
+
+    return chi

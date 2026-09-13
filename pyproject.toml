@@ -1,0 +1,30 @@
+[project]
+name = "conformal-mappings"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "eriktoller", email = "erik@toller.se" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel>=7.3.0",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.3",
+]
+
+[project.scripts]
+conformal-mappings = "conformal_mappings:main"
+
+[build-system]
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ghp-import>=2.1.0",
+    "myst-nb>=1.4.0",
+    "pre-commit>=4.6.2",
+    "ruff>=0.16.7",
+    "sphinx>=9.1.0",
+]
