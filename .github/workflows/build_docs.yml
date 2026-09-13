@@ -10,6 +10,10 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest 
+
+    permissions:
+      contents: write  # For creating releases
+      id-token: write  # For trusted publishing
     
     steps:
     - uses: actions/checkout@v4
