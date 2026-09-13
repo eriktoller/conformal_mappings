@@ -1,4 +1,4 @@
-name: Publish Package
+name: Publish documentation
 
 on:
   pull_request:
@@ -25,8 +25,8 @@ jobs:
     - name: Build HTML
       run: | 
         cd source/
-        make html
+        uv run make html
     
     - name: Run ghp-import
       run: | 
-        ghp-import -n -p -f docs/_build/html
+        ghp-import -n -p -f source/_build/html
