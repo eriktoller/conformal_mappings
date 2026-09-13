@@ -111,16 +111,19 @@ data-aria-dark="Switch to auto color mode">
 <section id="the-mapping">
 <h2>The mapping<a class="headerlink" href="#the-mapping" title="Link to this heading">#</a></h2>
 <p>The mapping is dervied using Schwartz-Christoffel and is of the from</p>
-<div class="math-wrapper amsmath docutils container" id="equation-158a1568-2850-4d90-a6f7-84c0dabffbc9">
-<div class="amsmath math notranslate nohighlight" id="equation-158a1568-2850-4d90-a6f7-84c0dabffbc9">
-<span class="eqno">(1)<a class="headerlink" href="#equation-158a1568-2850-4d90-a6f7-84c0dabffbc9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="math-wrapper amsmath docutils container">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 z = \frac{h}{\pi}\left[ \sqrt{\chi - 1} \sqrt{\chi + 1}  + \ln\left(\chi + \sqrt{\chi - 1} \sqrt{\chi + 1}\right)\right]
-\end{equation}\]</div>
+\end{equation*}\]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="c1"># Imports</span>
 </span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.elements</span><span class="w"> </span><span class="kn">import</span> <span class="n">omega_uni_flow</span>
+</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.mappings</span><span class="w"> </span><span class="kn">import</span> <span class="n">xi_to_ramp</span>
+</span><span data-line="5"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.plotter</span><span class="w"> </span><span class="kn">import</span> <span class="n">contour_flow_net</span>
 </span></pre></div>
 </div>
 </div>
@@ -150,18 +153,20 @@ z = \frac{h}{\pi}\left[ \sqrt{\chi - 1} \sqrt{\chi + 1}  + \ln\left(\chi + \sqrt
 </span><span data-line="3"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
 </span><span data-line="4"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
 </span><span data-line="5"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"z-plane"</span><span class="p">)</span>
-</span><span data-line="6">
-</span><span data-line="7"><span class="c1"># Chi-plane plot</span>
-</span><span data-line="8"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
-</span><span data-line="9"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
-</span><span data-line="10"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
-</span><span data-line="11"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"chi-plane"</span><span class="p">)</span>
-</span><span data-line="12"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span><span data-line="6"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="7">
+</span><span data-line="8"><span class="c1"># Chi-plane plot</span>
+</span><span data-line="9"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
+</span><span data-line="10"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+</span><span data-line="11"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="12"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"chi-plane"</span><span class="p">)</span>
+</span><span data-line="13"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="14"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8c1364640f8b74eb4c7aff0bd46b1ba21b423d951a2e3d9fc0c7b9f0c6feb90c.png" src="_images/8c1364640f8b74eb4c7aff0bd46b1ba21b423d951a2e3d9fc0c7b9f0c6feb90c.png" />
+<img alt="_images/0088bc159ef8aafe0cdd2bdc484f684f56f0a395b9ad29503c5fc05173966078.png" src="_images/0088bc159ef8aafe0cdd2bdc484f684f56f0a395b9ad29503c5fc05173966078.png" />
 </div>
 </div>
 </section>
@@ -174,12 +179,54 @@ z = \frac{h}{\pi}\left[ \sqrt{\chi - 1} \sqrt{\chi + 1}  + \ln\left(\chi + \sqrt
 </span><span data-line="2"><span class="n">w</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span><span class="n">j</span>
 </span><span data-line="3">
 </span><span data-line="4"><span class="c1"># Omega function</span>
-</span><span data-line="5"><span class="n">omega_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">omega_uni_flow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">map_chi_to_z</span><span class="p">(</span><span class="k">lambda</span> <span class="n">chi</span><span class="p">:</span> <span class="n">xi_to_ramp</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">h</span><span class="p">)))</span>
+</span><span data-line="5"><span class="n">omega_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">omega_uni_flow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
 </span></pre></div>
 </div>
 </div>
 </div>
 <p>We can now plot the solution</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span><span data-line="2"><span class="n">contour_flow_net</span><span class="p">(</span>
+</span><span data-line="3">    <span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span>
+</span><span data-line="4">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span>
+</span><span data-line="5">    <span class="n">flow_func</span><span class="o">=</span> <span class="n">omega_func</span><span class="p">,</span>
+</span><span data-line="6">    <span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+</span><span data-line="7">    <span class="n">xgrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="8">    <span class="n">ygrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="9">    <span class="n">mapping_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">chi</span><span class="p">:</span> <span class="n">xi_to_ramp</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span>
+</span><span data-line="10">    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="11"><span class="p">)</span>
+</span><span data-line="12"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
+</span><span data-line="13"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+</span><span data-line="14"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="15"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"z-plane"</span><span class="p">)</span>
+</span><span data-line="16"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="17">
+</span><span data-line="18"><span class="n">contour_flow_net</span><span class="p">(</span>
+</span><span data-line="19">    <span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span>
+</span><span data-line="20">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span>
+</span><span data-line="21">    <span class="n">flow_func</span><span class="o">=</span> <span class="n">omega_func</span><span class="p">,</span>
+</span><span data-line="22">    <span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+</span><span data-line="23">    <span class="n">xgrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="24">    <span class="n">ygrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="25">    <span class="n">mapping_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span data-line="26">    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span data-line="27"><span class="p">)</span>
+</span><span data-line="28"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
+</span><span data-line="29"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+</span><span data-line="30"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="31"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"chi-plane"</span><span class="p">)</span>
+</span><span data-line="32"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="33"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/76e74c41d4b0b450bd54a30c45327a9b1d653c17fe4f04e6a914ff80f1d501f3.png" src="_images/76e74c41d4b0b450bd54a30c45327a9b1d653c17fe4f04e6a914ff80f1d501f3.png" />
+</div>
+</div>
 </section>
 </section>
 
