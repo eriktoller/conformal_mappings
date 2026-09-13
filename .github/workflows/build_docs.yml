@@ -24,7 +24,7 @@ jobs:
 
     - name: Build HTML
       run: | 
-        cd docs/
+        cd source/
         make html
     
     - name: Run ghp-import
