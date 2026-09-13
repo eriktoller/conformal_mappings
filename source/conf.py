@@ -17,6 +17,11 @@ extensions = [
     "myst_nb",
 ]
 
+myst_enable_extensions = [
+    "amsmath",
+    "colon_fence",
+]
+
 templates_path = ['_templates']
 exclude_patterns = []
 
