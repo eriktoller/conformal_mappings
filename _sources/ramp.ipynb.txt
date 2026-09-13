@@ -10,14 +10,14 @@
     "\n",
     "## The mapping\n",
     "The mapping is dervied using Schwartz-Christoffel and is of the from\n",
-    "$$\n",
+    "\\begin{equation}\n",
     "z = \\frac{h}{\\pi}\\left[ \\sqrt{\\chi - 1} \\sqrt{\\chi + 1}  + \\ln\\left(\\chi + \\sqrt{\\chi - 1} \\sqrt{\\chi + 1}\\right)\\right]\n",
-    "$$"
+    "\\end{equation}"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 14,
    "id": "12341f25",
    "metadata": {},
    "outputs": [],
@@ -36,7 +36,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 15,
    "id": "af95e6f9",
    "metadata": {},
    "outputs": [],
@@ -63,7 +63,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 16,
    "id": "c2a97427",
    "metadata": {},
    "outputs": [
@@ -104,7 +104,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 17,
    "id": "29ddfc75",
    "metadata": {},
    "outputs": [],
