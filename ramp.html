@@ -75,6 +75,8 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#the-mapping">The mapping</a></li>
 <li><a class="reference internal" href="#horizonatal-uniform-flow">Horizonatal uniform flow</a></li>
+<li><a class="reference internal" href="#well-close-to-a-coast-line">Well close to a coast line</a></li>
+<li><a class="reference internal" href="#impermeable-curced-boudnary">Impermeable curced boudnary</a></li>
 </ul>
 </div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
@@ -121,9 +123,10 @@ z = \frac{h}{\pi}\left[ \sqrt{\chi - 1} \sqrt{\chi + 1}  + \ln\left(\chi + \sqrt
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="c1"># Imports</span>
 </span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-</span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.elements</span><span class="w"> </span><span class="kn">import</span> <span class="n">omega_uni_flow</span>
-</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.mappings</span><span class="w"> </span><span class="kn">import</span> <span class="n">xi_to_ramp</span>
-</span><span data-line="5"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.plotter</span><span class="w"> </span><span class="kn">import</span> <span class="n">contour_flow_net</span>
+</span><span data-line="3"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.elements</span><span class="w"> </span><span class="kn">import</span> <span class="n">omega_uni_flow</span>
+</span><span data-line="5"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.mappings</span><span class="w"> </span><span class="kn">import</span> <span class="n">xi_to_ramp</span>
+</span><span data-line="6"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.plotter</span><span class="w"> </span><span class="kn">import</span> <span class="n">contour_flow_net</span>
 </span></pre></div>
 </div>
 </div>
@@ -148,7 +151,7 @@ z = \frac{h}{\pi}\left[ \sqrt{\chi - 1} \sqrt{\chi + 1}  + \ln\left(\chi + \sqrt
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 </span><span data-line="2"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
 </span><span data-line="3"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
 </span><span data-line="4"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
@@ -166,7 +169,7 @@ z = \frac{h}{\pi}\left[ \sqrt{\chi - 1} \sqrt{\chi + 1}  + \ln\left(\chi + \sqrt
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0088bc159ef8aafe0cdd2bdc484f684f56f0a395b9ad29503c5fc05173966078.png" src="_images/0088bc159ef8aafe0cdd2bdc484f684f56f0a395b9ad29503c5fc05173966078.png" />
+<img alt="_images/8fc7b3ed125c87632074edb9072c51c8dcd86bd945c90e0c930253c0ebc31b57.png" src="_images/8fc7b3ed125c87632074edb9072c51c8dcd86bd945c90e0c930253c0ebc31b57.png" />
 </div>
 </div>
 </section>
@@ -187,7 +190,7 @@ z = \frac{h}{\pi}\left[ \sqrt{\chi - 1} \sqrt{\chi + 1}  + \ln\left(\chi + \sqrt
 <p>We can now plot the solution</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 </span><span data-line="2"><span class="n">contour_flow_net</span><span class="p">(</span>
 </span><span data-line="3">    <span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span>
 </span><span data-line="4">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span>
@@ -224,7 +227,156 @@ z = \frac{h}{\pi}\left[ \sqrt{\chi - 1} \sqrt{\chi + 1}  + \ln\left(\chi + \sqrt
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/76e74c41d4b0b450bd54a30c45327a9b1d653c17fe4f04e6a914ff80f1d501f3.png" src="_images/76e74c41d4b0b450bd54a30c45327a9b1d653c17fe4f04e6a914ff80f1d501f3.png" />
+<img alt="_images/fb43122ae2e0e1282e2bde261adfa92d07dde64521b7edb278ba149d30400833.png" src="_images/fb43122ae2e0e1282e2bde261adfa92d07dde64521b7edb278ba149d30400833.png" />
+</div>
+</div>
+</section>
+<section id="well-close-to-a-coast-line">
+<h2>Well close to a coast line<a class="headerlink" href="#well-close-to-a-coast-line" title="Link to this heading">#</a></h2>
+<p>In this example we will use the method of images and place a well close to a coast line shaped as the ramp.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="c1"># Varialbes</span>
+</span><span data-line="2"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.elements</span><span class="w"> </span><span class="kn">import</span> <span class="n">omega_well</span>
+</span><span data-line="3">
+</span><span data-line="4">
+</span><span data-line="5"><span class="n">q</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="6"><span class="n">zw</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span>
+</span><span data-line="7">
+</span><span data-line="8"><span class="c1"># Omega function</span>
+</span><span data-line="9"><span class="n">omega_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">omega_well</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="o">-</span><span class="n">zw</span><span class="p">)</span> <span class="o">-</span> <span class="n">omega_well</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">zw</span><span class="p">))</span>
+</span><span data-line="10">
+</span><span data-line="11"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+</span><span data-line="12"><span class="n">contour_flow_net</span><span class="p">(</span>
+</span><span data-line="13">    <span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span>
+</span><span data-line="14">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span>
+</span><span data-line="15">    <span class="n">flow_func</span><span class="o">=</span> <span class="n">omega_func</span><span class="p">,</span>
+</span><span data-line="16">    <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+</span><span data-line="17">    <span class="n">xgrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="18">    <span class="n">ygrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="19">    <span class="n">mapping_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">chi</span><span class="p">:</span> <span class="n">xi_to_ramp</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span>
+</span><span data-line="20">    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="21"><span class="p">)</span>
+</span><span data-line="22"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
+</span><span data-line="23"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+</span><span data-line="24"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="25"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"z-plane"</span><span class="p">)</span>
+</span><span data-line="26"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="27">
+</span><span data-line="28"><span class="n">contour_flow_net</span><span class="p">(</span>
+</span><span data-line="29">    <span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span>
+</span><span data-line="30">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span>
+</span><span data-line="31">    <span class="n">flow_func</span><span class="o">=</span> <span class="n">omega_func</span><span class="p">,</span>
+</span><span data-line="32">    <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+</span><span data-line="33">    <span class="n">xgrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="34">    <span class="n">ygrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="35">    <span class="n">mapping_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span data-line="36">    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span data-line="37"><span class="p">)</span>
+</span><span data-line="38"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
+</span><span data-line="39"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+</span><span data-line="40"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="41"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"chi-plane"</span><span class="p">)</span>
+</span><span data-line="42"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="43">
+</span><span data-line="44"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span><span data-line="45"><span class="n">contour_flow_net</span><span class="p">(</span>
+</span><span data-line="46">    <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span>
+</span><span data-line="47">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">4</span><span class="p">),</span>
+</span><span data-line="48">    <span class="n">flow_func</span><span class="o">=</span> <span class="n">omega_func</span><span class="p">,</span>
+</span><span data-line="49">    <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+</span><span data-line="50">    <span class="n">xgrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="51">    <span class="n">ygrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="52">    <span class="n">mapping_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">chi</span><span class="p">:</span> <span class="n">xi_to_ramp</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span>
+</span><span data-line="53">    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+</span><span data-line="54"><span class="p">)</span>
+</span><span data-line="55"><span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
+</span><span data-line="56"><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</span><span data-line="57"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="58"><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"z-plane"</span><span class="p">)</span>
+</span><span data-line="59"><span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="60">
+</span><span data-line="61"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e2c9c9a77a2b8e5ba8de52333a57bf4928f048c910713fb07a813e2abd0e53f8.png" src="_images/e2c9c9a77a2b8e5ba8de52333a57bf4928f048c910713fb07a813e2abd0e53f8.png" />
+<img alt="_images/b5a387cc0819e561e7a241197062917f56ebd1f3f290d9525933e02200388a45.png" src="_images/b5a387cc0819e561e7a241197062917f56ebd1f3f290d9525933e02200388a45.png" />
+</div>
+</div>
+</section>
+<section id="impermeable-curced-boudnary">
+<h2>Impermeable curced boudnary<a class="headerlink" href="#impermeable-curced-boudnary" title="Link to this heading">#</a></h2>
+<p>We can also make the boundary cured by offsetting the constant stream lime separating the images.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="c1"># Varialbes</span>
+</span><span data-line="2"><span class="n">q</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="3"><span class="n">zw</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span>
+</span><span data-line="4">
+</span><span data-line="5"><span class="c1"># Omega function</span>
+</span><span data-line="6"><span class="n">omega_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">omega_well</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="o">-</span><span class="n">zw</span><span class="p">)</span> <span class="o">+</span> <span class="n">omega_well</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="o">-</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">zw</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="n">j</span><span class="p">))</span>
+</span><span data-line="7">
+</span><span data-line="8"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+</span><span data-line="9"><span class="n">contour_flow_net</span><span class="p">(</span>
+</span><span data-line="10">    <span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span>
+</span><span data-line="11">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span>
+</span><span data-line="12">    <span class="n">flow_func</span><span class="o">=</span> <span class="n">omega_func</span><span class="p">,</span>
+</span><span data-line="13">    <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+</span><span data-line="14">    <span class="n">xgrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="15">    <span class="n">ygrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="16">    <span class="n">mapping_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">chi</span><span class="p">:</span> <span class="n">xi_to_ramp</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span>
+</span><span data-line="17">    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="18"><span class="p">)</span>
+</span><span data-line="19"><span class="n">z</span> <span class="o">=</span> <span class="n">xi_to_ramp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+</span><span data-line="20"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span data-line="21"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+</span><span data-line="22"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="23"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"z-plane"</span><span class="p">)</span>
+</span><span data-line="24"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="25">
+</span><span data-line="26"><span class="n">contour_flow_net</span><span class="p">(</span>
+</span><span data-line="27">    <span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span>
+</span><span data-line="28">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span>
+</span><span data-line="29">    <span class="n">flow_func</span><span class="o">=</span> <span class="n">omega_func</span><span class="p">,</span>
+</span><span data-line="30">    <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+</span><span data-line="31">    <span class="n">xgrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="32">    <span class="n">ygrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="33">    <span class="n">mapping_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span data-line="34">    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span data-line="35"><span class="p">)</span>
+</span><span data-line="36">
+</span><span data-line="37"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span data-line="38"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+</span><span data-line="39"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="40"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"chi-plane"</span><span class="p">)</span>
+</span><span data-line="41"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="42">
+</span><span data-line="43"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span><span data-line="44"><span class="n">contour_flow_net</span><span class="p">(</span>
+</span><span data-line="45">    <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span>
+</span><span data-line="46">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">4</span><span class="p">),</span>
+</span><span data-line="47">    <span class="n">flow_func</span><span class="o">=</span> <span class="n">omega_func</span><span class="p">,</span>
+</span><span data-line="48">    <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+</span><span data-line="49">    <span class="n">xgrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="50">    <span class="n">ygrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="51">    <span class="n">mapping_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">chi</span><span class="p">:</span> <span class="n">xi_to_ramp</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span>
+</span><span data-line="52">    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+</span><span data-line="53"><span class="p">)</span>
+</span><span data-line="54"><span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span data-line="55"><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</span><span data-line="56"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="57"><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"z-plane"</span><span class="p">)</span>
+</span><span data-line="58"><span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="59">
+</span><span data-line="60"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06baeb14090781fce8b88c54548f606a1c1acfc44fd25f29d91e6c18180a6234.png" src="_images/06baeb14090781fce8b88c54548f606a1c1acfc44fd25f29d91e6c18180a6234.png" />
+<img alt="_images/a78929e27aefc3a2a86f30293cf3ecacf6376525bcd3464a50345fa6e1a0ba12.png" src="_images/a78929e27aefc3a2a86f30293cf3ecacf6376525bcd3464a50345fa6e1a0ba12.png" />
 </div>
 </div>
 </section>
