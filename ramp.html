@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Horizontal ramp with a step &#8212; Confromal mappings  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Schwartz-Christoffel Mapping" href="sc.html" />
+    <link rel="prev" title="Conformal Mappings" href="about.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="horizontal-ramp-with-a-step">
+<h1>Horizontal ramp with a step<a class="headerlink" href="#horizontal-ramp-with-a-step" title="Link to this heading">¶</a></h1>
+<p>This notbook covers the conformal mapping of a horizontal ramp with a step. The step is centerd along th <code class="docutils literal notranslate"><span class="pre">y</span></code>-axis and of a defined hight <code class="docutils literal notranslate"><span class="pre">h</span></code>.</p>
+<section id="the-mapping">
+<h2>The mapping<a class="headerlink" href="#the-mapping" title="Link to this heading">¶</a></h2>
+<p>The mapping is dervied using Schwartz-Christoffel and is of the from
+$$
+z = \frac{h}{\pi}\left[ \sqrt{\chi - 1} \sqrt{\chi + 1}  + \ln\left(\chi + \sqrt{\chi - 1} \sqrt{\chi + 1}\right)\right]
+$$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We define the ramp with the following variable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variables</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Plot limits</span>
+<span class="n">xlim</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The ramp is mapped on to the half-plane, or rather the half plane in the <code class="docutils literal notranslate"><span class="pre">chi</span></code>-plane is mapped onto the ramp in the <code class="docutils literal notranslate"><span class="pre">z</span></code>-plane.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Becuse the mapping is from <code class="docutils literal notranslate"><span class="pre">chi</span></code>to <code class="docutils literal notranslate"><span class="pre">z</span></code>the elements must be defined in the <code class="docutils literal notranslate"><span class="pre">chi</span></code>plane.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"z-plane"</span><span class="p">)</span>
+
+<span class="c1"># Chi-plane plot</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"chi-plane"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8c1364640f8b74eb4c7aff0bd46b1ba21b423d951a2e3d9fc0c7b9f0c6feb90c.png" src="_images/8c1364640f8b74eb4c7aff0bd46b1ba21b423d951a2e3d9fc0c7b9f0c6feb90c.png" />
+</div>
+</div>
+</section>
+<section id="horizonatal-uniform-flow">
+<h2>Horizonatal uniform flow<a class="headerlink" href="#horizonatal-uniform-flow" title="Link to this heading">¶</a></h2>
+<p>We model horizontal uniform flow by defining unfirom flow parallel to the <code class="docutils literal notranslate"><span class="pre">x</span></code>-axis in the <code class="docutils literal notranslate"><span class="pre">chi</span></code>-plane.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Varialbes</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span><span class="n">j</span>
+
+<span class="c1"># Omega function</span>
+<span class="n">omega_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">omega_uni_flow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">map_chi_to_z</span><span class="p">(</span><span class="k">lambda</span> <span class="n">chi</span><span class="p">:</span> <span class="n">xi_to_ramp</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">h</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now plot the solution</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Confromal mappings</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">Conformal Mappings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Horizontal ramp with a step</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-mapping">The mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#horizonatal-uniform-flow">Horizonatal uniform flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sc.html">Schwartz-Christoffel Mapping</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="about.html" title="previous chapter">Conformal Mappings</a></li>
+      <li>Next: <a href="sc.html" title="next chapter">Schwartz-Christoffel Mapping</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Erik Toller.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/ramp.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
