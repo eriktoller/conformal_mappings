@@ -15,7 +15,7 @@ Let
 
 be the upper half-plane. For a polygon with vertices having interior angles
 :math:`\pi\alpha_1,\ldots,\pi\alpha_n`, choose real prevertices
-\(x_1 < \cdots < x_{n-1}\), with the remaining prevertex at infinity. The
+:math:`x_1 < \cdots < x_{n-1}`, with the remaining prevertex at infinity. The
 Schwarz-Christoffel map has the form
 
 .. math::
@@ -24,8 +24,8 @@ Schwarz-Christoffel map has the form
    \prod_{j=1}^{n-1} (\zeta - x_j)^{\alpha_j - 1}\,d\zeta,
    \qquad z \in \mathbb{H},
 
-where :math:`A` and :math:`C` are complex constants, and the powers are defined using
-branches analytic in \(\mathbb{H}\). Equivalently,
+where :math:`A` and :math:`C` are complex constants, and the powers are defined
+using branches analytic in :math:`\mathbb{H}`. Equivalently,
 
 .. math::
 
