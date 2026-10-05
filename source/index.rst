@@ -6,9 +6,7 @@
 Confromal mappings documentation
 ================================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+This website contains a collection of conformal mappings and their properties. The mappings are organized into different sections, each focusing on a specific type of mapping or application.
 
 
 .. toctree::
@@ -17,5 +15,6 @@ documentation for details.
 
    about
    ramp
+   quarter_plane
    sc
 

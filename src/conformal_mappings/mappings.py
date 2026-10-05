@@ -135,6 +135,40 @@ def xi_to_ramp(xi, h):
     )
     return z
 
+def xi_to_z_quarter_plane(xi):
+    """
+    Map a quarter-plane defined by its vertices to the upper half-plane.
+
+    Parameters
+    ----------
+    xi : complex
+        The complex coordinate to be mapped.
+
+    Returns
+    -------
+    chi : complex
+        The mapped complex coordinate on the upper half-plane.
+    """
+    z = np.sqrt(xi)
+    return z
+
+def z_to_xi_quarter_plane(z):
+    """
+    Map a point in the upper half-plane back to a quarter-plane.
+
+    Parameters
+    ----------
+    z : complex
+        The complex coordinate to be mapped back.
+
+    Returns
+    -------
+    xi : complex
+        The mapped complex coordinate in the quarter-plane.
+    """
+    xi = z**2
+    return xi
+
 
 def arc_to_chi(z, center, radius, start_angle, end_angle):
     """
