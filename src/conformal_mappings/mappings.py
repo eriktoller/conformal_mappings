@@ -169,6 +169,44 @@ def z_to_xi_quarter_plane(z):
     xi = z**2
     return xi
 
+def xi_to_z_wedge(xi, alpha):
+    """
+    Map a wedge defined by its angle to the upper half-plane.
+
+    Parameters
+    ----------
+    xi : complex
+        The complex coordinate to be mapped.
+    alpha : float
+        The angle of the wedge in radians.
+
+    Returns
+    -------
+    z : complex
+        The mapped complex coordinate on the upper half-plane.
+    """
+    z = xi**(alpha / np.pi)
+    return z
+
+def z_to_xi_wedge(z, alpha):
+    """
+    Map a point in the upper half-plane back to a wedge.
+
+    Parameters
+    ----------
+    z : complex
+        The complex coordinate to be mapped back.
+    alpha : float
+        The angle of the wedge in radians.
+
+    Returns
+    -------
+    xi : complex
+        The mapped complex coordinate in the wedge.
+    """
+    xi = z**(np.pi / alpha)
+    return xi
+
 
 def arc_to_chi(z, center, radius, start_angle, end_angle):
     """
