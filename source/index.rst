@@ -10,8 +10,9 @@ This website contains a collection of conformal mappings and their properties. T
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
+   :hidden:
 
    about
    quarter_plane
