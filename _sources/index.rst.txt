@@ -14,7 +14,8 @@ This website contains a collection of conformal mappings and their properties. T
    :caption: Contents:
 
    about
-   ramp
    quarter_plane
+   wedge
    sc
+   ramp
 
