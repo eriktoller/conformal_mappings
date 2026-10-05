@@ -10,7 +10,7 @@ This website contains a collection of conformal mappings and their properties. T
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
    :hidden:
 

@@ -14,7 +14,7 @@
    "id": "01a2cc73",
    "metadata": {},
    "source": [
-    "# The mapping\n",
+    "## The mapping\n",
     "The quater plane is mapped to the half plane using\n",
     "\\begin{equation*}\n",
     "    z = \\chi^2\n",
@@ -186,6 +186,7 @@
    "id": "fb4089ed",
    "metadata": {},
    "source": [
+    "## A well near a curved coast\n",
     "We can also model the coast as a smooth curved boundary by moving the coast line in the $\\chi$-plane."
    ]
   },
