@@ -135,6 +135,25 @@ def xi_to_ramp(xi, h):
     )
     return z
 
+def z_to_xi_strip(z, h):
+    """
+    Map a point in the upper half-plane back to a strip defined by its height.
+
+    Parameters
+    ----------
+    z : complex
+        The complex coordinate to be mapped back.
+    h : float
+        The height of the strip.
+
+    Returns
+    -------
+    xi : complex
+        The mapped complex coordinate in the strip.
+    """
+    xi = h/2 * ( np.cosh(np.pi * z / h) -1 )
+    return xi
+
 def xi_to_z_quarter_plane(xi):
     """
     Map a quarter-plane defined by its vertices to the upper half-plane.

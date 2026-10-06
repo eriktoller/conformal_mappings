@@ -11,3 +11,4 @@ Herein is a collection of conformal mappings and their properties. The mappings 
    quarter_plane
    wedge
    ramp
+   strip
