@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Conformal Mappings - Confromal mappings documentation</title><link rel="author" title="About these documents" href="#" /><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Schwarz-Christoffel Mapping" href="sc.html" /><link rel="prev" title="Confromal mappings documentation" href="index.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Complex potential - Confromal mappings documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Schwarz-Christoffel Mapping" href="sc.html" /><link rel="prev" title="Conformal Mappings" href="conformal.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
@@ -19,7 +19,7 @@
 }
 </style>
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="Conformal Mappings"/>
+  <meta property="og:type" content="website"/><meta property="og:title" content="Complex potential"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -58,8 +58,10 @@ data-aria-dark="Switch to auto color mode">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Conformal Mappings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conformal.html">Conformal Mappings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Complex potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sc.html">Schwarz-Christoffel Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mobius_transformation.html">Möbius transformation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mappings/index.html">A collection of conformal mappings</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mappings/quarter_plane.html">Quater plane</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mappings/wedge.html">Wedge</a></li>
@@ -77,7 +79,10 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#basic-flow-equations">Basic flow equations</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6">
@@ -93,7 +98,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Conformal Mappings</strong>
+        <strong itemprop="name">Complex potential</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -106,23 +111,59 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="conformal-mappings">
-<h1>Conformal Mappings<a class="headerlink" href="#conformal-mappings" title="Link to this heading">#</a></h1>
-<p>This is a collection of notes on conformal mappings: complex functions that
-preserve angles locally. These maps provide a way to transform a geometric
-problem in one domain into a simpler problem in another, while retaining the
-local shape of curves and the angles at which they meet.</p>
-<p>In complex analysis, a function is conformal at a point when it is
-holomorphic there and its derivative is nonzero. Near such a point, the
-function acts approximately like a rotation followed by a uniform scaling.
-Thus, it preserves angles and orientation, but generally does not preserve
-lengths or areas.</p>
-<p>Conformal maps are useful for studying domains with awkward boundaries. For
-example, a map can transform a region into the unit disk or the upper
-half-plane, where questions about harmonic functions, potential flow, and
-boundary values may be easier to solve. The following notes introduce several
-examples and techniques, including mappings to wedges, quarter-planes, and
-polygons.</p>
+          <section id="complex-potential">
+<h1>Complex potential<a class="headerlink" href="#complex-potential" title="Link to this heading">#</a></h1>
+<p>In two-dimensional incompressible, irrotational flow, the flow can often be
+represented by a complex potential</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\Omega(z) = \Phi(x,y) + i\Psi(x,y),\]</div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(z = x + iy\)</span>, <span class="math notranslate nohighlight">\(\Phi\)</span> is the velocity potential, and
+<span class="math notranslate nohighlight">\(\Psi\)</span> is the stream function.</p>
+<p>The complex potential is an analytic function of <span class="math notranslate nohighlight">\(z\)</span> in the flow domain,
+so it satisfies the Cauchy-Riemann equations</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\frac{\partial \Phi}{\partial x}
+= \frac{\partial \Psi}{\partial y},
+\qquad
+\frac{\partial \Phi}{\partial y}
+= -\frac{\partial \Psi}{\partial x}.\]</div>
+</div>
+<p>These equations imply that both <span class="math notranslate nohighlight">\(\Phi\)</span> and <span class="math notranslate nohighlight">\(\Psi\)</span> are harmonic,
+so they satisfy Laplace’s equation,</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\nabla^2 \Phi = 0,
+\qquad
+\nabla^2 \Psi = 0.\]</div>
+</div>
+<section id="basic-flow-equations">
+<h2>Basic flow equations<a class="headerlink" href="#basic-flow-equations" title="Link to this heading">#</a></h2>
+<p>The complex velocity is obtained by differentiating the complex potential,</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[-\frac{d\Omega}{dz} = q_x + iq_y,\]</div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(q_x\)</span> and <span class="math notranslate nohighlight">\(q_y\)</span> are the velocity components in the <span class="math notranslate nohighlight">\(x\)</span> and
+<span class="math notranslate nohighlight">\(y\)</span> directions. Equivalently,</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[u = \frac{\partial \Phi}{\partial x}
+= \frac{\partial \Psi}{\partial y},
+\qquad
+v = \frac{\partial \Phi}{\partial y}
+= -\frac{\partial \Psi}{\partial x}.\]</div>
+</div>
+<p>The streamlines are the level curves of <span class="math notranslate nohighlight">\(\Psi\)</span>, while the equipotential
+curves are the level curves of <span class="math notranslate nohighlight">\(\Phi\)</span>. Since the flow is incompressible
+and irrotational, these curves intersect orthogonally, and the velocity field is
+invariant under a conformal change of variables.</p>
+<p>This is the key idea behind conformal mapping in fluid mechanics: a complicated
+flow domain can be mapped to a simpler one, such as the upper half-plane or the
+unit disk, where the complex potential is easier to write down.</p>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -131,10 +172,10 @@ polygons.</p>
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="index.html">
+    <a href="conformal.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Home</div></div>
+        <span>Previous</span><div class="title">Conformal Mappings</div></div>
     </a>
   </div><div class="navigation-next">
     <a href="sc.html">
@@ -168,5 +209,6 @@ polygons.</p>
       <script src="_static/documentation_options.js?v=5929fcd5"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
-      <script src="_static/shibuya.js?v=50760d75"></script></body>
+      <script src="_static/shibuya.js?v=50760d75"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script></body>
 </html>

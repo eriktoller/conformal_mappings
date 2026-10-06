@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Schwarz-Christoffel Mapping - Confromal mappings documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Möbius transformation" href="mobius_transformation.html" /><link rel="prev" title="Complex potential" href="complex_potential.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Conformal Mappings - Confromal mappings documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Complex potential" href="complex_potential.html" /><link rel="prev" title="Confromal mappings documentation" href="index.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
@@ -19,7 +19,7 @@
 }
 </style>
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="Schwarz-Christoffel Mapping"/>
+  <meta property="og:type" content="website"/><meta property="og:title" content="Conformal Mappings"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -58,9 +58,9 @@ data-aria-dark="Switch to auto color mode">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="conformal.html">Conformal Mappings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Conformal Mappings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complex_potential.html">Complex potential</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Schwarz-Christoffel Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sc.html">Schwarz-Christoffel Mapping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mobius_transformation.html">Möbius transformation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mappings/index.html">A collection of conformal mappings</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mappings/quarter_plane.html">Quater plane</a></li>
@@ -95,7 +95,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Schwarz-Christoffel Mapping</strong>
+        <strong itemprop="name">Conformal Mappings</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -108,38 +108,23 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="schwarz-christoffel-mapping">
-<h1>Schwarz-Christoffel Mapping<a class="headerlink" href="#schwarz-christoffel-mapping" title="Link to this heading">#</a></h1>
-<p>The Schwarz-Christoffel formula gives a conformal map from the upper half-plane
-to the interior of a polygon. It is especially useful because the polygon’s
-corners correspond to points on the real axis, called <em>prevertices</em>. Conformal
-maps preserve angles locally, and the formula encodes each polygon corner’s
-interior angle in the behavior of the map near its prevertex.</p>
-<p>Let</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\mathbb{H} = \{z \in \mathbb{C} : \operatorname{Im}(z) &gt; 0\}\]</div>
-</div>
-<p>be the upper half-plane. For a polygon with vertices having interior angles
-<span class="math notranslate nohighlight">\(\pi\alpha_1,\ldots,\pi\alpha_n\)</span>, choose real prevertices
-<span class="math notranslate nohighlight">\(x_1 &lt; \cdots &lt; x_{n-1}\)</span>, with the remaining prevertex at infinity. The
-Schwarz-Christoffel map has the form</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[f(z) = A + C \int_{z_0}^{z}
-\prod_{j=1}^{n-1} (\zeta - x_j)^{\alpha_j - 1}\,d\zeta,
-\qquad z \in \mathbb{H},\]</div>
-</div>
-<p>where <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are complex constants, and the powers are defined
-using branches analytic in <span class="math notranslate nohighlight">\(\mathbb{H}\)</span>. Equivalently,</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[f'(z) = C\prod_{j=1}^{n-1}(z-x_j)^{\alpha_j-1}.\]</div>
-</div>
-<p>Each exponent <span class="math notranslate nohighlight">\(\alpha_j-1\)</span> determines the angle at the corresponding
-polygon vertex. The angles satisfy
-<span class="math notranslate nohighlight">\(\sum_{j=1}^{n}\alpha_j=n-2\)</span>, as required for a polygon, and the constant
-and prevertices are chosen to match its size, position, and side lengths.</p>
+          <section id="conformal-mappings">
+<h1>Conformal Mappings<a class="headerlink" href="#conformal-mappings" title="Link to this heading">#</a></h1>
+<p>This is a collection of notes on conformal mappings: complex functions that
+preserve angles locally. These maps provide a way to transform a geometric
+problem in one domain into a simpler problem in another, while retaining the
+local shape of curves and the angles at which they meet.</p>
+<p>In complex analysis, a function is conformal at a point when it is
+holomorphic there and its derivative is nonzero. Near such a point, the
+function acts approximately like a rotation followed by a uniform scaling.
+Thus, it preserves angles and orientation, but generally does not preserve
+lengths or areas.</p>
+<p>Conformal maps are useful for studying domains with awkward boundaries. For
+example, a map can transform a region into the unit disk or the upper
+half-plane, where questions about harmonic functions, potential flow, and
+boundary values may be easier to solve. The following notes introduce several
+examples and techniques, including mappings to wedges, quarter-planes, and
+polygons.</p>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -148,16 +133,16 @@ and prevertices are chosen to match its size, position, and side lengths.</p>
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="complex_potential.html">
+    <a href="index.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Complex potential</div></div>
+        <span>Previous</span><div class="title">Home</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="mobius_transformation.html">
+    <a href="complex_potential.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Möbius transformation</div>
+        <div class="title">Complex potential</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>
@@ -185,6 +170,5 @@ and prevertices are chosen to match its size, position, and side lengths.</p>
       <script src="_static/documentation_options.js?v=5929fcd5"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
-      <script src="_static/shibuya.js?v=50760d75"></script>
-      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script></body>
+      <script src="_static/shibuya.js?v=50760d75"></script></body>
 </html>

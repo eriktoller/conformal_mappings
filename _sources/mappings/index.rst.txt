@@ -7,7 +7,6 @@ Herein is a collection of conformal mappings and their properties. The mappings 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   :hidden:
 
    quarter_plane
    wedge

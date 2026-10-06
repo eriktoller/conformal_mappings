@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="violet" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Schwarz-Christoffel Mapping - Confromal mappings documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Möbius transformation" href="mobius_transformation.html" /><link rel="prev" title="Complex potential" href="complex_potential.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Möbius transformation - Confromal mappings documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="A collection of conformal mappings" href="mappings/index.html" /><link rel="prev" title="Schwarz-Christoffel Mapping" href="sc.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
@@ -19,7 +19,7 @@
 }
 </style>
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="Schwarz-Christoffel Mapping"/>
+  <meta property="og:type" content="website"/><meta property="og:title" content="Möbius transformation"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -60,8 +60,8 @@ data-aria-dark="Switch to auto color mode">
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="conformal.html">Conformal Mappings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complex_potential.html">Complex potential</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Schwarz-Christoffel Mapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mobius_transformation.html">Möbius transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sc.html">Schwarz-Christoffel Mapping</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Möbius transformation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mappings/index.html">A collection of conformal mappings</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mappings/quarter_plane.html">Quater plane</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mappings/wedge.html">Wedge</a></li>
@@ -79,7 +79,11 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#relation-to-boundary-value-problems">Relation to boundary-value problems</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6">
@@ -95,7 +99,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Schwarz-Christoffel Mapping</strong>
+        <strong itemprop="name">Möbius transformation</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -108,38 +112,41 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="schwarz-christoffel-mapping">
-<h1>Schwarz-Christoffel Mapping<a class="headerlink" href="#schwarz-christoffel-mapping" title="Link to this heading">#</a></h1>
-<p>The Schwarz-Christoffel formula gives a conformal map from the upper half-plane
-to the interior of a polygon. It is especially useful because the polygon’s
-corners correspond to points on the real axis, called <em>prevertices</em>. Conformal
-maps preserve angles locally, and the formula encodes each polygon corner’s
-interior angle in the behavior of the map near its prevertex.</p>
-<p>Let</p>
+          <section id="mobius-transformation">
+<h1>Möbius transformation<a class="headerlink" href="#mobius-transformation" title="Link to this heading">#</a></h1>
+<p>A Möbius transformation is a fractional linear map of the complex plane,</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
-\[\mathbb{H} = \{z \in \mathbb{C} : \operatorname{Im}(z) &gt; 0\}\]</div>
+\[w = \frac{az + b}{cz + d}, \qquad ad - bc \neq 0.\]</div>
 </div>
-<p>be the upper half-plane. For a polygon with vertices having interior angles
-<span class="math notranslate nohighlight">\(\pi\alpha_1,\ldots,\pi\alpha_n\)</span>, choose real prevertices
-<span class="math notranslate nohighlight">\(x_1 &lt; \cdots &lt; x_{n-1}\)</span>, with the remaining prevertex at infinity. The
-Schwarz-Christoffel map has the form</p>
+<p>Here <span class="math notranslate nohighlight">\(a, b, c, d\)</span> are complex constants. The condition
+<span class="math notranslate nohighlight">\(ad - bc \neq 0\)</span> ensures that the map is invertible.</p>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h2>
+<p>Möbius transformations are conformal everywhere they are defined. They map
+lines and circles in the <span class="math notranslate nohighlight">\(z\)</span>-plane to lines and circles in the
+<span class="math notranslate nohighlight">\(w\)</span>-plane. In particular, they preserve angles and map the extended
+complex plane to itself.</p>
+<p>This makes them especially useful in complex analysis and fluid dynamics, where
+one often wants to transform a complicated boundary into a simpler one, such as
+a half-plane, a circle, or a wedge.</p>
+<p>A simple example is the inversion</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
-\[f(z) = A + C \int_{z_0}^{z}
-\prod_{j=1}^{n-1} (\zeta - x_j)^{\alpha_j - 1}\,d\zeta,
-\qquad z \in \mathbb{H},\]</div>
+\[w = \frac{1}{z},\]</div>
 </div>
-<p>where <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are complex constants, and the powers are defined
-using branches analytic in <span class="math notranslate nohighlight">\(\mathbb{H}\)</span>. Equivalently,</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[f'(z) = C\prod_{j=1}^{n-1}(z-x_j)^{\alpha_j-1}.\]</div>
-</div>
-<p>Each exponent <span class="math notranslate nohighlight">\(\alpha_j-1\)</span> determines the angle at the corresponding
-polygon vertex. The angles satisfy
-<span class="math notranslate nohighlight">\(\sum_{j=1}^{n}\alpha_j=n-2\)</span>, as required for a polygon, and the constant
-and prevertices are chosen to match its size, position, and side lengths.</p>
+<p>which sends a line or circle not passing through the origin to another line or
+circle. More generally, a Möbius transformation can be composed with shifts,
+rotations, dilations, and inversions to build a wide range of useful mappings.</p>
+</section>
+<section id="relation-to-boundary-value-problems">
+<h2>Relation to boundary-value problems<a class="headerlink" href="#relation-to-boundary-value-problems" title="Link to this heading">#</a></h2>
+<p>In conformal mapping, a Möbius transform is often used as a preliminary change
+of variables. It can simplify a boundary geometry before applying a more
+specialized transform, such as the Schwarz-Christoffel mapping or a wedge map.
+The important point is that the transformation preserves local shape and angle,
+while changing the global geometry in a controlled way.</p>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -148,16 +155,16 @@ and prevertices are chosen to match its size, position, and side lengths.</p>
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="complex_potential.html">
+    <a href="sc.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Complex potential</div></div>
+        <span>Previous</span><div class="title">Schwarz-Christoffel Mapping</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="mobius_transformation.html">
+    <a href="mappings/index.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Möbius transformation</div>
+        <div class="title">A collection of conformal mappings</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

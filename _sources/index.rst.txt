@@ -8,13 +8,17 @@ Confromal mappings documentation
 
 This website contains a collection of conformal mappings and their properties. The mappings are organized into different sections, each focusing on a specific type of mapping or application.
 
+Author:
+   Erik Toller
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
    :hidden:
 
-   about
+   conformal
+   complex_potential
    sc
+   mobius_transformation
    mappings/index
 
