@@ -66,6 +66,7 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l2"><a class="reference internal" href="../mappings/quarter_plane.html">Quater plane</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mappings/wedge.html">Wedge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mappings/ramp.html">Horizontal ramp with a step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mappings/strip.html">Horizontal semi-infinate strip</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">API reference</a><ul class="current">
@@ -96,6 +97,7 @@ data-aria-dark="Switch to auto color mode">
 <li><a class="reference internal" href="#conformal_mappings.mappings.xi_to_z_quarter_plane"><code class="docutils literal notranslate"><span class="pre">xi_to_z_quarter_plane()</span></code></a></li>
 <li><a class="reference internal" href="#conformal_mappings.mappings.xi_to_z_wedge"><code class="docutils literal notranslate"><span class="pre">xi_to_z_wedge()</span></code></a></li>
 <li><a class="reference internal" href="#conformal_mappings.mappings.z_to_xi_quarter_plane"><code class="docutils literal notranslate"><span class="pre">z_to_xi_quarter_plane()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.z_to_xi_strip"><code class="docutils literal notranslate"><span class="pre">z_to_xi_strip()</span></code></a></li>
 <li><a class="reference internal" href="#conformal_mappings.mappings.z_to_xi_wedge"><code class="docutils literal notranslate"><span class="pre">z_to_xi_wedge()</span></code></a></li>
 <li><a class="reference internal" href="#conformal_mappings.elements.omega_uni_flow"><code class="docutils literal notranslate"><span class="pre">omega_uni_flow()</span></code></a></li>
 <li><a class="reference internal" href="#conformal_mappings.elements.omega_well"><code class="docutils literal notranslate"><span class="pre">omega_well()</span></code></a></li>
@@ -377,11 +379,33 @@ data-aria-dark="Switch to auto color mode">
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.z_to_xi_strip">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">z_to_xi_strip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.z_to_xi_strip" title="Link to this definition">#</a></dt>
+<dd><p>Map a point in the upper half-plane back to a strip defined by its height.</p>
+<section id="id19">
+<h3>Parameters<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped back.</p>
+</dd>
+<dt>h<span class="classifier">float</span></dt><dd><p>The height of the strip.</p>
+</dd>
+</dl>
+</section>
+<section id="id20">
+<h3>Returns<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>xi<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate in the strip.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="conformal_mappings.mappings.z_to_xi_wedge">
 <span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">z_to_xi_wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.z_to_xi_wedge" title="Link to this definition">#</a></dt>
 <dd><p>Map a point in the upper half-plane back to a wedge.</p>
-<section id="id19">
-<h3>Parameters<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<section id="id21">
+<h3>Parameters<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>z<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped back.</p>
 </dd>
@@ -389,8 +413,8 @@ data-aria-dark="Switch to auto color mode">
 </dd>
 </dl>
 </section>
-<section id="id20">
-<h3>Returns<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<section id="id22">
+<h3>Returns<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>xi<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate in the wedge.</p>
 </dd>
@@ -415,8 +439,8 @@ data-aria-dark="Switch to auto color mode">
 </dd>
 </dl>
 </section>
-<section id="id21">
-<h3>Returns<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<section id="id23">
+<h3>Returns<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>omega<span class="classifier">complex</span></dt><dd><p>The complex potential for the unform flow at the given point.</p>
 </dd>
@@ -430,8 +454,8 @@ data-aria-dark="Switch to auto color mode">
 <dt class="sig sig-object py" id="conformal_mappings.elements.omega_well">
 <span class="sig-prename descclassname"><span class="pre">conformal_mappings.elements.</span></span><span class="sig-name descname"><span class="pre">omega_well</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_z_to_chi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.elements.omega_well" title="Link to this definition">#</a></dt>
 <dd><p>Model a well using conformal mappings.</p>
-<section id="id22">
-<h3>Parameters<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<section id="id24">
+<h3>Parameters<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>q<span class="classifier">float</span></dt><dd><p>The strength of the well.</p>
 </dd>
@@ -439,8 +463,8 @@ data-aria-dark="Switch to auto color mode">
 </dd>
 </dl>
 </section>
-<section id="id23">
-<h3>Returns<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<section id="id25">
+<h3>Returns<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>function</dt><dd><p>A function that takes a complex coordinate z and returns the complex potential omega due to the well.</p>
 </dd>
@@ -452,8 +476,8 @@ data-aria-dark="Switch to auto color mode">
 <dt class="sig sig-object py" id="conformal_mappings.plotter.add_steamline_arrows">
 <span class="sig-prename descclassname"><span class="pre">conformal_mappings.plotter.</span></span><span class="sig-name descname"><span class="pre">add_steamline_arrows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cs_psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_arrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.plotter.add_steamline_arrows" title="Link to this definition">#</a></dt>
 <dd><p>Add arrows to the streamlines to indicate flow direction.</p>
-<section id="id24">
-<h3>Parameters<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
+<section id="id26">
+<h3>Parameters<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>cs_psi<span class="classifier">QuadContourSet</span></dt><dd><p>The contour set for the stream function.</p>
 </dd>
@@ -463,8 +487,8 @@ data-aria-dark="Switch to auto color mode">
 </dd>
 </dl>
 </section>
-<section id="id25">
-<h3>Returns<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
+<section id="id27">
+<h3>Returns<a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
 <p>None</p>
 </section>
 </dd></dl>
@@ -473,8 +497,8 @@ data-aria-dark="Switch to auto color mode">
 <dt class="sig sig-object py" id="conformal_mappings.plotter.contour_flow_net">
 <span class="sig-prename descclassname"><span class="pre">conformal_mappings.plotter.</span></span><span class="sig-name descname"><span class="pre">contour_flow_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xrange</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yrange</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xgrid_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ygrid_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.plotter.contour_flow_net" title="Link to this definition">#</a></dt>
 <dd><p>Plot the contour of a complex flow function over a specified range.</p>
-<section id="id26">
-<h3>Parameters<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
+<section id="id28">
+<h3>Parameters<a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>xrange<span class="classifier">tuple</span></dt><dd><p>A tuple specifying the range of x values (xmin, xmax).</p>
 </dd>
@@ -490,8 +514,8 @@ data-aria-dark="Switch to auto color mode">
 </dd>
 </dl>
 </section>
-<section id="id27">
-<h3>Returns<a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
+<section id="id29">
+<h3>Returns<a class="headerlink" href="#id29" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>cs_phi<span class="classifier">QuadContourSet</span></dt><dd><p>The contour set for the potential function (real part).</p>
 </dd>
@@ -505,8 +529,8 @@ data-aria-dark="Switch to auto color mode">
 <dt class="sig sig-object py" id="conformal_mappings.plotter.make_arrow_gif">
 <span class="sig-prename descclassname"><span class="pre">conformal_mappings.plotter.</span></span><span class="sig-name descname"><span class="pre">make_arrow_gif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cs_psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_arrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'arrows.gif'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.plotter.make_arrow_gif" title="Link to this definition">#</a></dt>
 <dd><p>Create an animated GIF of arrows moving along the streamlines.</p>
-<section id="id28">
-<h3>Parameters<a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
+<section id="id30">
+<h3>Parameters<a class="headerlink" href="#id30" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>cs_psi<span class="classifier">QuadContourSet</span></dt><dd><p>The contour set for the stream function.</p>
 </dd>
@@ -518,8 +542,8 @@ data-aria-dark="Switch to auto color mode">
 </dd>
 </dl>
 </section>
-<section id="id29">
-<h3>Returns<a class="headerlink" href="#id29" title="Link to this heading">#</a></h3>
+<section id="id31">
+<h3>Returns<a class="headerlink" href="#id31" title="Link to this heading">#</a></h3>
 <p>None</p>
 </section>
 </dd></dl>
@@ -528,8 +552,8 @@ data-aria-dark="Switch to auto color mode">
 <span id="module-conformal_mappings.model"></span><dt class="sig sig-object py" id="conformal_mappings.math_func.asym_exp">
 <span class="sig-prename descclassname"><span class="pre">conformal_mappings.math_func.</span></span><span class="sig-name descname"><span class="pre">asym_exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coef</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.math_func.asym_exp" title="Link to this definition">#</a></dt>
 <dd><p>Compute the asymptotic expansion for a given chi value and coefficients.</p>
-<section id="id30">
-<h3>Parameters<a class="headerlink" href="#id30" title="Link to this heading">#</a></h3>
+<section id="id32">
+<h3>Parameters<a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>chi<span class="classifier">complex</span></dt><dd><p>The point at which to evaluate the asymptotic expansion.</p>
 </dd>
@@ -538,8 +562,8 @@ coefficient of (1/chi^i).</p>
 </dd>
 </dl>
 </section>
-<section id="id31">
-<h3>Returns<a class="headerlink" href="#id31" title="Link to this heading">#</a></h3>
+<section id="id33">
+<h3>Returns<a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>complex</dt><dd><p>The value of the asymptotic expansion evaluated at chi.</p>
 </dd>
@@ -551,8 +575,8 @@ coefficient of (1/chi^i).</p>
 <dt class="sig sig-object py" id="conformal_mappings.math_func.cauchy_integral">
 <span class="sig-prename descclassname"><span class="pre">conformal_mappings.math_func.</span></span><span class="sig-name descname"><span class="pre">cauchy_integral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_omega</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_chi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.math_func.cauchy_integral" title="Link to this definition">#</a></dt>
 <dd><p>Compute the Cauchy integral of a given function around the unit circle.</p>
-<section id="id32">
-<h3>Parameters<a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
+<section id="id34">
+<h3>Parameters<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>func_omega<span class="classifier">function</span></dt><dd><p>A function that takes a complex number chi and returns the complex potential omega.</p>
 </dd>
@@ -564,8 +588,8 @@ coefficient of (1/chi^i).</p>
 </dd>
 </dl>
 </section>
-<section id="id33">
-<h3>Returns<a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
+<section id="id35">
+<h3>Returns<a class="headerlink" href="#id35" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>complex</dt><dd><p>The value of the Cauchy integral.</p>
 </dd>
@@ -577,8 +601,8 @@ coefficient of (1/chi^i).</p>
 <dt class="sig sig-object py" id="conformal_mappings.math_func.taylor_series">
 <span class="sig-prename descclassname"><span class="pre">conformal_mappings.math_func.</span></span><span class="sig-name descname"><span class="pre">taylor_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coef</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.math_func.taylor_series" title="Link to this definition">#</a></dt>
 <dd><p>Compute the Taylor series expansion for a given chi value and coefficients.</p>
-<section id="id34">
-<h3>Parameters<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
+<section id="id36">
+<h3>Parameters<a class="headerlink" href="#id36" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>chi<span class="classifier">complex</span></dt><dd><p>The point at which to evaluate the Taylor series.</p>
 </dd>
@@ -587,8 +611,8 @@ coefficient of (chi^i).</p>
 </dd>
 </dl>
 </section>
-<section id="id35">
-<h3>Returns<a class="headerlink" href="#id35" title="Link to this heading">#</a></h3>
+<section id="id37">
+<h3>Returns<a class="headerlink" href="#id37" title="Link to this heading">#</a></h3>
 <dl class="simple">
 <dt>complex</dt><dd><p>The value of the Taylor series evaluated at chi.</p>
 </dd>

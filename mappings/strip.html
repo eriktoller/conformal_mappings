@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Horizontal semi-infinate strip - Confromal mappings documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="API reference" href="../api/index.html" /><link rel="prev" title="Horizontal ramp with a step" href="ramp.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="Horizontal semi-infinate strip"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      
+      
+      <strong>Confromal mappings</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../conformal.html">Conformal Mappings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../complex_potential.html">Complex potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sc.html">Schwarz-Christoffel Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobius_transformation.html">Möbius transformation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">A collection of conformal mappings</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quarter_plane.html">Quater plane</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wedge.html">Wedge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ramp.html">Horizontal ramp with a step</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Horizontal semi-infinate strip</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/conformal_mappings.html">conformal_mappings package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#the-mapping">The mapping</a></li>
+<li><a class="reference internal" href="#horizonatal-uniform-flow">Horizonatal uniform flow</a></li>
+<li><a class="reference internal" href="#well-close-to-a-coast-line">Well close to a coast line</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Confromal mappings</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">A collection of conformal mappings</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Horizontal semi-infinate strip</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="horizontal-semi-infinate-strip">
+<h1>Horizontal semi-infinate strip<a class="headerlink" href="#horizontal-semi-infinate-strip" title="Link to this heading">#</a></h1>
+<p>This notbook covers the conformal mapping of a horizontal strip. The step is centerd along th <code class="docutils literal notranslate"><span class="pre">y</span></code>-axis and of a defined hight <code class="docutils literal notranslate"><span class="pre">h</span></code>.</p>
+<section id="the-mapping">
+<h2>The mapping<a class="headerlink" href="#the-mapping" title="Link to this heading">#</a></h2>
+<p>The mapping is dervied using Schwartz-Christoffel and is of the from</p>
+<div class="math-wrapper amsmath docutils container">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \xi = \frac{h}{2}\left[ \cosh\left(\pi\frac{z}{h}\right) - 1 \right]
+\end{equation*}\]</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="c1"># Imports</span>
+</span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</span><span data-line="3"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.elements</span><span class="w"> </span><span class="kn">import</span> <span class="n">omega_uni_flow</span>
+</span><span data-line="5"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.mappings</span><span class="w"> </span><span class="kn">import</span> <span class="n">z_to_xi_strip</span>
+</span><span data-line="6"><span class="kn">from</span><span class="w"> </span><span class="nn">conformal_mappings.plotter</span><span class="w"> </span><span class="kn">import</span> <span class="n">contour_flow_net</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+<p>We define the ramp with the following variable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="c1"># Variables</span>
+</span><span data-line="2"><span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="3">
+</span><span data-line="4"><span class="c1"># Plot limits</span>
+</span><span data-line="5"><span class="n">xlim</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span data-line="6"><span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+<p>The ramp is mapped on to the half-plane, or rather the half plane in the $\xi$-plane is mapped onto the ramp in the $z$-plane.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Becuse the mapping is from <code class="docutils literal notranslate"><span class="pre">xi</span></code> to <code class="docutils literal notranslate"><span class="pre">z</span></code> the elements must be defined in the <code class="docutils literal notranslate"><span class="pre">xi</span></code>-plane.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+</span><span data-line="2"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
+</span><span data-line="3"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+</span><span data-line="4"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="5"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$z$-plane"</span><span class="p">)</span>
+</span><span data-line="6"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="7">
+</span><span data-line="8"><span class="c1"># Chi-plane plot</span>
+</span><span data-line="9"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.8</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
+</span><span data-line="10"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+</span><span data-line="11"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+</span><span data-line="12"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\xi$-plane"</span><span class="p">)</span>
+</span><span data-line="13"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="14"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7da78bec622c233fdfefc695b0011d4bec46861c76563986017b0f944a7c9411.png" src="../_images/7da78bec622c233fdfefc695b0011d4bec46861c76563986017b0f944a7c9411.png" />
+</div>
+</div>
+</section>
+<section id="horizonatal-uniform-flow">
+<h2>Horizonatal uniform flow<a class="headerlink" href="#horizonatal-uniform-flow" title="Link to this heading">#</a></h2>
+<p>We model horizontal uniform flow by defining unfirom flow parallel to the <code class="docutils literal notranslate"><span class="pre">x</span></code>-axis in the <code class="docutils literal notranslate"><span class="pre">chi</span></code>-plane.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="c1"># Varialbes</span>
+</span><span data-line="2"><span class="n">w</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span><span class="n">j</span>
+</span><span data-line="3">
+</span><span data-line="4"><span class="c1"># Omega function</span>
+</span><span data-line="5"><span class="n">omega_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">omega_uni_flow</span><span class="p">(</span><span class="n">z_to_xi_strip</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">w</span><span class="p">)</span>
+</span><span data-line="6"><span class="n">omega_func2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">omega_uni_flow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+<p>We can now plot the solution</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+</span><span data-line="2"><span class="n">contour_flow_net</span><span class="p">(</span>
+</span><span data-line="3">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
+</span><span data-line="4">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span>
+</span><span data-line="5">    <span class="n">flow_func</span><span class="o">=</span> <span class="n">omega_func</span><span class="p">,</span>
+</span><span data-line="6">    <span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+</span><span data-line="7">    <span class="n">xgrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="8">    <span class="n">ygrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="9">    <span class="c1">#mapping_func=lambda chi: xi_to_ramp(chi, h),</span>
+</span><span data-line="10">    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="11"><span class="p">)</span>
+</span><span data-line="12"><span class="c1">#ax[0].fill_between([xlim[0], 0, 0, xlim[1]], [h, h, 0, 0], y2=-1, facecolor=(.8,.8,.8,.5), edgecolor="k")</span>
+</span><span data-line="13"><span class="c1">#ax[0].set_xlim(xlim)</span>
+</span><span data-line="14"><span class="c1">#ax[0].set_ylim(ylim)</span>
+</span><span data-line="15"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$z$-plane"</span><span class="p">)</span>
+</span><span data-line="16"><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="17">
+</span><span data-line="18"><span class="n">contour_flow_net</span><span class="p">(</span>
+</span><span data-line="19">    <span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span>
+</span><span data-line="20">    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span>
+</span><span data-line="21">    <span class="n">flow_func</span><span class="o">=</span> <span class="n">omega_func2</span><span class="p">,</span>
+</span><span data-line="22">    <span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+</span><span data-line="23">    <span class="n">xgrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="24">    <span class="n">ygrid_points</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+</span><span data-line="25">    <span class="n">mapping_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span data-line="26">    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span data-line="27"><span class="p">)</span>
+</span><span data-line="28"><span class="c1">#ax[1].fill_between([xlim[0], xlim[1]], [0, 0], y2=-1, facecolor=(.8,.8,.8,.5), edgecolor="k")</span>
+</span><span data-line="29"><span class="c1">#ax[1].set_xlim(xlim)</span>
+</span><span data-line="30"><span class="c1">#ax[1].set_ylim(ylim)</span>
+</span><span data-line="31"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\xi$-plane"</span><span class="p">)</span>
+</span><span data-line="32"><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+</span><span data-line="33"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0f8ec8bf197e621b751b316bd9150ad4dd2704dc230e1f18c140b0404576c233.png" src="../_images/0f8ec8bf197e621b751b316bd9150ad4dd2704dc230e1f18c140b0404576c233.png" />
+</div>
+</div>
+</section>
+<section id="well-close-to-a-coast-line">
+<h2>Well close to a coast line<a class="headerlink" href="#well-close-to-a-coast-line" title="Link to this heading">#</a></h2>
+<p>In this example we will use the method of images and place a well close to a coast line shaped as the ramp.</p>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="ramp.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Horizontal ramp with a step</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../api/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">API reference</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Erik Toller</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/shibuya.js?v=50760d75"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script></body>
+</html>
