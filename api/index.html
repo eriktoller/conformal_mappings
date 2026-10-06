@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-accent-color="violet" data-content_root="./">
+<html lang="en" data-accent-color="violet" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Conformal Mappings - Confromal mappings documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Complex potential" href="complex_potential.html" /><link rel="prev" title="Confromal mappings documentation" href="index.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API reference - Confromal mappings documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="conformal_mappings package" href="conformal_mappings.html" /><link rel="prev" title="Horizontal ramp with a step" href="../mappings/ramp.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
-  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
-    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
-    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -19,20 +19,20 @@
 }
 </style>
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="Conformal Mappings"/>
+  <meta property="og:type" content="website"/><meta property="og:title" content="API reference"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
   <div class="sy-head-inner sy-container mx-auto">
-    <a class="sy-head-brand" href="index.html">
+    <a class="sy-head-brand" href="../index.html">
       
       
       <strong>Confromal mappings</strong>
     </a>
     <div class="sy-head-nav" id="head-nav">
       <nav class="sy-head-links"></nav>
-      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
   <input type="text" name="q" placeholder="Search" />
   <kbd>/</kbd>
 </form><div class="sy-head-socials"></div></div>
@@ -58,18 +58,18 @@ data-aria-dark="Switch to auto color mode">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Conformal Mappings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complex_potential.html">Complex potential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sc.html">Schwarz-Christoffel Mapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mobius_transformation.html">Möbius transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mappings/index.html">A collection of conformal mappings</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mappings/quarter_plane.html">Quater plane</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mappings/wedge.html">Wedge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mappings/ramp.html">Horizontal ramp with a step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conformal.html">Conformal Mappings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../complex_potential.html">Complex potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sc.html">Schwarz-Christoffel Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobius_transformation.html">Möbius transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mappings/index.html">A collection of conformal mappings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mappings/quarter_plane.html">Quater plane</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mappings/wedge.html">Wedge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mappings/ramp.html">Horizontal ramp with a step</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="api/index.html">API reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api/conformal_mappings.html">conformal_mappings package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conformal_mappings.html">conformal_mappings package</a></li>
 </ul>
 </li>
 </ul>
@@ -95,11 +95,11 @@ data-aria-dark="Switch to auto color mode">
       </button>
     </div>
     <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="index.html"><span itemprop="name">Confromal mappings</span></a>
+        <a itemprop="item" href="../index.html"><span itemprop="name">Confromal mappings</span></a>
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Conformal Mappings</strong>
+        <strong itemprop="name">API reference</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -112,23 +112,15 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="conformal-mappings">
-<h1>Conformal Mappings<a class="headerlink" href="#conformal-mappings" title="Link to this heading">#</a></h1>
-<p>This is a collection of notes on conformal mappings: complex functions that
-preserve angles locally. These maps provide a way to transform a geometric
-problem in one domain into a simpler problem in another, while retaining the
-local shape of curves and the angles at which they meet.</p>
-<p>In complex analysis, a function is conformal at a point when it is
-holomorphic there and its derivative is nonzero. Near such a point, the
-function acts approximately like a rotation followed by a uniform scaling.
-Thus, it preserves angles and orientation, but generally does not preserve
-lengths or areas.</p>
-<p>Conformal maps are useful for studying domains with awkward boundaries. For
-example, a map can transform a region into the unit disk or the upper
-half-plane, where questions about harmonic functions, potential flow, and
-boundary values may be easier to solve. The following notes introduce several
-examples and techniques, including mappings to wedges, quarter-planes, and
-polygons.</p>
+          <section id="api-reference">
+<h1>API reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h1>
+<p>This section documents the public Python API of the package.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conformal_mappings.html">conformal_mappings package</a></li>
+</ul>
+</div>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -137,16 +129,16 @@ polygons.</p>
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="index.html">
+    <a href="../mappings/ramp.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Home</div></div>
+        <span>Previous</span><div class="title">Horizontal ramp with a step</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="complex_potential.html">
+    <a href="conformal_mappings.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Complex potential</div>
+        <div class="title">conformal_mappings package</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>
@@ -171,8 +163,8 @@ polygons.</p>
     </div>
   </div>
 </footer>
-      <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=fd6eb6e6"></script>
-      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
-      <script src="_static/shibuya.js?v=50760d75"></script></body>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/shibuya.js?v=50760d75"></script></body>
 </html>

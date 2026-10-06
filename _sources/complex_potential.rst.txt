@@ -6,7 +6,7 @@ represented by a complex potential
 
 .. math::
 
-   \Omega(z) = \Phi(x,y) + i\Psi(x,y),
+   \Omega(z) = \Phi(z) + i\Psi(z),
 
 where :math:`z = x + iy`, :math:`\Phi` is the velocity potential, and
 :math:`\Psi` is the stream function.
@@ -31,6 +31,14 @@ so they satisfy Laplace's equation,
    \qquad
    \nabla^2 \Psi = 0.
 
+In complex varaibles we can write Laplace's equation as
+.. math::
+
+   \frac{\partial^2 \Omega}{\partial z \partial \bar{z}} = 0,
+
+Note that since :math:`\Omega` is analytic, it depends only on :math:`z` and not on :math:`\bar{z}`. 
+This is a key property of analytic functions, and it implies that the complex potential by definition satisfies Laplace's equation in the flow domain.
+
 Basic flow equations
 --------------------
 
@@ -45,10 +53,10 @@ where :math:`q_x` and :math:`q_y` are the velocity components in the :math:`x` a
 
 .. math::
 
-   u = \frac{\partial \Phi}{\partial x}
+   q_x = \frac{\partial \Phi}{\partial x}
    = \frac{\partial \Psi}{\partial y},
    \qquad
-   v = \frac{\partial \Phi}{\partial y}
+   q_y = \frac{\partial \Phi}{\partial y}
    = -\frac{\partial \Psi}{\partial x}.
 
 The streamlines are the level curves of :math:`\Psi`, while the equipotential

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>conformal_mappings package - Confromal mappings documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="API reference" href="index.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="conformal_mappings package"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      
+      
+      <strong>Confromal mappings</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../conformal.html">Conformal Mappings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../complex_potential.html">Complex potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sc.html">Schwarz-Christoffel Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobius_transformation.html">Möbius transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mappings/index.html">A collection of conformal mappings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mappings/quarter_plane.html">Quater plane</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mappings/wedge.html">Wedge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mappings/ramp.html">Horizontal ramp with a step</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">conformal_mappings package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#conformal_mappings.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#module-conformal_mappings.mappings">Submodules</a><ul>
+<li><a class="reference internal" href="#conformal_mappings.mappings.arc_to_chi"><code class="docutils literal notranslate"><span class="pre">arc_to_chi()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.chi_to_circle"><code class="docutils literal notranslate"><span class="pre">chi_to_circle()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.chi_to_line"><code class="docutils literal notranslate"><span class="pre">chi_to_line()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.circle_to_chi"><code class="docutils literal notranslate"><span class="pre">circle_to_chi()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.line_to_chi"><code class="docutils literal notranslate"><span class="pre">line_to_chi()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.square_to_chi"><code class="docutils literal notranslate"><span class="pre">square_to_chi()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.xi_to_ramp"><code class="docutils literal notranslate"><span class="pre">xi_to_ramp()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.xi_to_z_quarter_plane"><code class="docutils literal notranslate"><span class="pre">xi_to_z_quarter_plane()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.xi_to_z_wedge"><code class="docutils literal notranslate"><span class="pre">xi_to_z_wedge()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.z_to_xi_quarter_plane"><code class="docutils literal notranslate"><span class="pre">z_to_xi_quarter_plane()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.mappings.z_to_xi_wedge"><code class="docutils literal notranslate"><span class="pre">z_to_xi_wedge()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.elements.omega_uni_flow"><code class="docutils literal notranslate"><span class="pre">omega_uni_flow()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.elements.omega_well"><code class="docutils literal notranslate"><span class="pre">omega_well()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.plotter.add_steamline_arrows"><code class="docutils literal notranslate"><span class="pre">add_steamline_arrows()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.plotter.contour_flow_net"><code class="docutils literal notranslate"><span class="pre">contour_flow_net()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.plotter.make_arrow_gif"><code class="docutils literal notranslate"><span class="pre">make_arrow_gif()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.math_func.asym_exp"><code class="docutils literal notranslate"><span class="pre">asym_exp()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.math_func.cauchy_integral"><code class="docutils literal notranslate"><span class="pre">cauchy_integral()</span></code></a></li>
+<li><a class="reference internal" href="#conformal_mappings.math_func.taylor_series"><code class="docutils literal notranslate"><span class="pre">taylor_series()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Confromal mappings</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">API reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">conformal_mappings package</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="module-conformal_mappings">
+<span id="conformal-mappings-package"></span><h1>conformal_mappings package<a class="headerlink" href="#module-conformal_mappings" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.main">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#conformal_mappings.main" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<section id="module-conformal_mappings.mappings">
+<span id="submodules"></span><h2>Submodules<a class="headerlink" href="#module-conformal_mappings.mappings" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.arc_to_chi">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">arc_to_chi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.arc_to_chi" title="Link to this definition">#</a></dt>
+<dd><p>Map an arc defined by its center, radius, and start/end angles to a unit circle using a conformal mapping.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped.</p>
+</dd>
+<dt>center<span class="classifier">complex</span></dt><dd><p>The center of the arc.</p>
+</dd>
+<dt>radius<span class="classifier">float</span></dt><dd><p>The radius of the arc.</p>
+</dd>
+<dt>start_angle<span class="classifier">float</span></dt><dd><p>The starting angle of the arc in radians.</p>
+</dd>
+<dt>end_angle<span class="classifier">float</span></dt><dd><p>The ending angle of the arc in radians.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>chi<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate on the unit circle.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.chi_to_circle">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">chi_to_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.chi_to_circle" title="Link to this definition">#</a></dt>
+<dd><p>Map a point on the unit circle back to a circle defined by its center and radius using the inverse conformal mapping.</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>chi<span class="classifier">complex</span></dt><dd><p>The complex coordinate on the unit circle to be mapped back.</p>
+</dd>
+<dt>center<span class="classifier">complex</span></dt><dd><p>The center of the circle.</p>
+</dd>
+<dt>radius<span class="classifier">float</span></dt><dd><p>The radius of the circle.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate on the circle.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.chi_to_line">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">chi_to_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.chi_to_line" title="Link to this definition">#</a></dt>
+<dd><p>Map a point on the unit circle back to a line segment defined by its endpoints using the inverse conformal mapping.</p>
+<section id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>chi<span class="classifier">complex</span></dt><dd><p>The complex coordinate on the unit circle to be mapped back.</p>
+</dd>
+<dt>endpoints<span class="classifier">np.ndarray(complex)</span></dt><dd><p>A numpy array containing two complex numbers representing the endpoints of the line segment.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h3>Returns<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate on the line segment.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.circle_to_chi">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">circle_to_chi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.circle_to_chi" title="Link to this definition">#</a></dt>
+<dd><p>Map a circle defined by its center and radius to a unit circle using a conformal mapping.</p>
+<section id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped.</p>
+</dd>
+<dt>center<span class="classifier">complex</span></dt><dd><p>The center of the circle.</p>
+</dd>
+<dt>radius<span class="classifier">float</span></dt><dd><p>The radius of the circle.</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h3>Returns<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>chi<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate on the unit circle.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.line_to_chi">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">line_to_chi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.line_to_chi" title="Link to this definition">#</a></dt>
+<dd><p>Map a line segment defined by its endpoints to a unit circle using a conformal mapping.</p>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped.</p>
+</dd>
+<dt>endpoints<span class="classifier">np.ndarray(complex)</span></dt><dd><p>A numpy array containing two complex numbers representing the endpoints of the line segment.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h3>Returns<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>chi<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate on the unit circle.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.square_to_chi">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">square_to_chi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.square_to_chi" title="Link to this definition">#</a></dt>
+<dd><p>Map a square defined by its vertices to a unit circle using a conformal mapping.</p>
+<section id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped.</p>
+</dd>
+<dt>vertices<span class="classifier">np.ndarray(complex)</span></dt><dd><p>A numpy array containing four complex numbers representing the vertices of the square in order.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h3>Returns<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>chi<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate on the unit circle.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.xi_to_ramp">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">xi_to_ramp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.xi_to_ramp" title="Link to this definition">#</a></dt>
+<dd><p>Map a ramp defined by its height to the upper half-plane using Schwarz-Christoffel transformation.</p>
+<section id="id11">
+<h3>Parameters<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>xi<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped.</p>
+</dd>
+<dt>h<span class="classifier">float</span></dt><dd><p>The height of the ramp.</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h3>Returns<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>chi<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate on the upper half-plane.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.xi_to_z_quarter_plane">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">xi_to_z_quarter_plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.xi_to_z_quarter_plane" title="Link to this definition">#</a></dt>
+<dd><p>Map a quarter-plane defined by its vertices to the upper half-plane.</p>
+<section id="id13">
+<h3>Parameters<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>xi<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped.</p>
+</dd>
+</dl>
+</section>
+<section id="id14">
+<h3>Returns<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>chi<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate on the upper half-plane.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.xi_to_z_wedge">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">xi_to_z_wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.xi_to_z_wedge" title="Link to this definition">#</a></dt>
+<dd><p>Map a wedge defined by its angle to the upper half-plane.</p>
+<section id="id15">
+<h3>Parameters<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>xi<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped.</p>
+</dd>
+<dt>alpha<span class="classifier">float</span></dt><dd><p>The angle of the wedge in radians.</p>
+</dd>
+</dl>
+</section>
+<section id="id16">
+<h3>Returns<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate on the upper half-plane.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.z_to_xi_quarter_plane">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">z_to_xi_quarter_plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.z_to_xi_quarter_plane" title="Link to this definition">#</a></dt>
+<dd><p>Map a point in the upper half-plane back to a quarter-plane.</p>
+<section id="id17">
+<h3>Parameters<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped back.</p>
+</dd>
+</dl>
+</section>
+<section id="id18">
+<h3>Returns<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>xi<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate in the quarter-plane.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.mappings.z_to_xi_wedge">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.mappings.</span></span><span class="sig-name descname"><span class="pre">z_to_xi_wedge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.mappings.z_to_xi_wedge" title="Link to this definition">#</a></dt>
+<dd><p>Map a point in the upper half-plane back to a wedge.</p>
+<section id="id19">
+<h3>Parameters<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The complex coordinate to be mapped back.</p>
+</dd>
+<dt>alpha<span class="classifier">float</span></dt><dd><p>The angle of the wedge in radians.</p>
+</dd>
+</dl>
+</section>
+<section id="id20">
+<h3>Returns<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>xi<span class="classifier">complex</span></dt><dd><p>The mapped complex coordinate in the wedge.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function" id="module-conformal_mappings.elements">
+<dt class="sig sig-object py" id="conformal_mappings.elements.omega_uni_flow">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.elements.</span></span><span class="sig-name descname"><span class="pre">omega_uni_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_z_to_chi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_chi_to_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.elements.omega_uni_flow" title="Link to this definition">#</a></dt>
+<dd><p>Model of a unform flow unsing conformal mappings.</p>
+<section id="paramters">
+<h3>Paramters<a class="headerlink" href="#paramters" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>z<span class="classifier">complex</span></dt><dd><p>The complex point, either in z or chi</p>
+</dd>
+<dt>w<span class="classifier">complex</span></dt><dd><p>The strength and dirction of the unform flow of the form w = wx + 1j*wy</p>
+</dd>
+<dt>map_z_to_chi<span class="classifier">function, optional</span></dt><dd><p>The function that maps z to chi</p>
+</dd>
+<dt>map_chi_to_z<span class="classifier">funciton, optional</span></dt><dd><p>The function that maps chi to z</p>
+</dd>
+</dl>
+</section>
+<section id="id21">
+<h3>Returns<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>omega<span class="classifier">complex</span></dt><dd><p>The complex potential for the unform flow at the given point.</p>
+</dd>
+<dt>z<span class="classifier">complex</span></dt><dd><p>The coplex point z</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.elements.omega_well">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.elements.</span></span><span class="sig-name descname"><span class="pre">omega_well</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_z_to_chi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.elements.omega_well" title="Link to this definition">#</a></dt>
+<dd><p>Model a well using conformal mappings.</p>
+<section id="id22">
+<h3>Parameters<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>q<span class="classifier">float</span></dt><dd><p>The strength of the well.</p>
+</dd>
+<dt>map_z_to_chi<span class="classifier">function</span></dt><dd><p>A function that maps complex coordinate z to chi.</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h3>Returns<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>function</dt><dd><p>A function that takes a complex coordinate z and returns the complex potential omega due to the well.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function" id="module-conformal_mappings.plotter">
+<dt class="sig sig-object py" id="conformal_mappings.plotter.add_steamline_arrows">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.plotter.</span></span><span class="sig-name descname"><span class="pre">add_steamline_arrows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cs_psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_arrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.plotter.add_steamline_arrows" title="Link to this definition">#</a></dt>
+<dd><p>Add arrows to the streamlines to indicate flow direction.</p>
+<section id="id24">
+<h3>Parameters<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>cs_psi<span class="classifier">QuadContourSet</span></dt><dd><p>The contour set for the stream function.</p>
+</dd>
+<dt>n_arrows<span class="classifier">int</span></dt><dd><p>The number of arrows to add along each streamline.</p>
+</dd>
+<dt>arrow_style<span class="classifier">str</span></dt><dd><p>The style of the arrows.</p>
+</dd>
+</dl>
+</section>
+<section id="id25">
+<h3>Returns<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.plotter.contour_flow_net">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.plotter.</span></span><span class="sig-name descname"><span class="pre">contour_flow_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xrange</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yrange</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xgrid_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ygrid_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.plotter.contour_flow_net" title="Link to this definition">#</a></dt>
+<dd><p>Plot the contour of a complex flow function over a specified range.</p>
+<section id="id26">
+<h3>Parameters<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>xrange<span class="classifier">tuple</span></dt><dd><p>A tuple specifying the range of x values (xmin, xmax).</p>
+</dd>
+<dt>yrange<span class="classifier">tuple</span></dt><dd><p>A tuple specifying the range of y values (ymin, ymax).</p>
+</dd>
+<dt>flow_func<span class="classifier">function</span></dt><dd><p>A function that takes a complex number and returns a complex number representing the flow.</p>
+</dd>
+<dt>levels<span class="classifier">int</span></dt><dd><p>The number of contour levels to plot.</p>
+</dd>
+<dt>xgrid_points<span class="classifier">int</span></dt><dd><p>The number of grid points in the x direction.</p>
+</dd>
+<dt>ygrid_points<span class="classifier">int</span></dt><dd><p>The number of grid points in the y direction.</p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h3>Returns<a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>cs_phi<span class="classifier">QuadContourSet</span></dt><dd><p>The contour set for the potential function (real part).</p>
+</dd>
+<dt>cs_psi<span class="classifier">QuadContourSet</span></dt><dd><p>The contour set for the stream function (imaginary part).</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.plotter.make_arrow_gif">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.plotter.</span></span><span class="sig-name descname"><span class="pre">make_arrow_gif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cs_psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_arrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'arrows.gif'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.plotter.make_arrow_gif" title="Link to this definition">#</a></dt>
+<dd><p>Create an animated GIF of arrows moving along the streamlines.</p>
+<section id="id28">
+<h3>Parameters<a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>cs_psi<span class="classifier">QuadContourSet</span></dt><dd><p>The contour set for the stream function.</p>
+</dd>
+<dt>n_arrows<span class="classifier">int</span></dt><dd><p>The number of arrows to add along each streamline.</p>
+</dd>
+<dt>arrow_style<span class="classifier">str</span></dt><dd><p>The style of the arrows.</p>
+</dd>
+<dt>filename<span class="classifier">str</span></dt><dd><p>The name of the output GIF file.</p>
+</dd>
+</dl>
+</section>
+<section id="id29">
+<h3>Returns<a class="headerlink" href="#id29" title="Link to this heading">#</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py function" id="module-conformal_mappings.math_func">
+<span id="module-conformal_mappings.model"></span><dt class="sig sig-object py" id="conformal_mappings.math_func.asym_exp">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.math_func.</span></span><span class="sig-name descname"><span class="pre">asym_exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coef</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.math_func.asym_exp" title="Link to this definition">#</a></dt>
+<dd><p>Compute the asymptotic expansion for a given chi value and coefficients.</p>
+<section id="id30">
+<h3>Parameters<a class="headerlink" href="#id30" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>chi<span class="classifier">complex</span></dt><dd><p>The point at which to evaluate the asymptotic expansion.</p>
+</dd>
+<dt>coef<span class="classifier">np.ndarray(complex)</span></dt><dd><p>The coefficients of the asymptotic expansion, where coef[i] corresponds to the
+coefficient of (1/chi^i).</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h3>Returns<a class="headerlink" href="#id31" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>complex</dt><dd><p>The value of the asymptotic expansion evaluated at chi.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.math_func.cauchy_integral">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.math_func.</span></span><span class="sig-name descname"><span class="pre">cauchy_integral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_omega</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_chi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.math_func.cauchy_integral" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Cauchy integral of a given function around the unit circle.</p>
+<section id="id32">
+<h3>Parameters<a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>func_omega<span class="classifier">function</span></dt><dd><p>A function that takes a complex number chi and returns the complex potential omega.</p>
+</dd>
+<dt>func_chi<span class="classifier">function</span></dt><dd><p>A function that takes a complex number z and returns the corresponding chi value.</p>
+</dd>
+<dt>degrees<span class="classifier">int</span></dt><dd><p>The number of degrees of freedom for the integral.</p>
+</dd>
+<dt>num_points<span class="classifier">int</span></dt><dd><p>The number of points to use for the numerical integration.</p>
+</dd>
+</dl>
+</section>
+<section id="id33">
+<h3>Returns<a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>complex</dt><dd><p>The value of the Cauchy integral.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conformal_mappings.math_func.taylor_series">
+<span class="sig-prename descclassname"><span class="pre">conformal_mappings.math_func.</span></span><span class="sig-name descname"><span class="pre">taylor_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coef</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conformal_mappings.math_func.taylor_series" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Taylor series expansion for a given chi value and coefficients.</p>
+<section id="id34">
+<h3>Parameters<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>chi<span class="classifier">complex</span></dt><dd><p>The point at which to evaluate the Taylor series.</p>
+</dd>
+<dt>coef<span class="classifier">np.ndarray(complex)</span></dt><dd><p>The coefficients of the Taylor series, where coef[i] corresponds to the
+coefficient of (chi^i).</p>
+</dd>
+</dl>
+</section>
+<section id="id35">
+<h3>Returns<a class="headerlink" href="#id35" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>complex</dt><dd><p>The value of the Taylor series evaluated at chi.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">API reference</div></div>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Erik Toller</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/shibuya.js?v=50760d75"></script></body>
+</html>
