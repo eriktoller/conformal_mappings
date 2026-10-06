@@ -32,6 +32,7 @@ so they satisfy Laplace's equation,
    \nabla^2 \Psi = 0.
 
 In complex varaibles we can write Laplace's equation as
+
 .. math::
 
    \frac{\partial^2 \Omega}{\partial z \partial \bar{z}} = 0,
