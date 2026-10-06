@@ -13,8 +13,14 @@ author = 'Erik Toller'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath('../src'))
+
 extensions = [
     "myst_nb",
+    "sphinx.ext.autodoc",
 ]
 
 myst_enable_extensions = [
